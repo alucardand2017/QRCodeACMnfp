@@ -26,10 +26,11 @@ namespace QRCodeACMnfp
             IWebElement campoValor = webElementValor.FindElement(By.TagName("input"));
 
 
-            campoCnpj.SendKeys("");
-            campodata.SendKeys("");
-            campoExtrato.SendKeys("");
-            campoValor.SendKeys("");
+
+            campoCnpj.Clear();
+            campodata.Clear();
+            campoExtrato.Clear();
+            campoValor.Clear();
 
 
             campoCnpj.SendKeys(cnpj);

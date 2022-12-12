@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace QRCodeACMnfp
 {
-    class NotaFiscal
+    class NotaFiscalValoresl
     {
         public float Valor { get; set; }
-        public DateTime DataNota { get; set; }
-        public int Extrato { get; set; }
-        public long CNPJ { get; set; }
+       
 
+        public NotaFiscalValoresl(float valor)
+        {
+            Valor = valor;
+        }
     }
 }
