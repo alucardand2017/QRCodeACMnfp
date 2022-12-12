@@ -28,6 +28,7 @@ namespace QRCodeACMnfp
         private IWebDriver driver = new ChromeDriver();
         private List<NotaFiscalValoresl> Notas = new List<NotaFiscalValoresl>();
         private DataTable dt = new DataTable();
+        int lancamentos = 0;
         private int capacidadePlanilha = 400;
         private string enderecoSave = @"C:\Users\ander\Downloads\";
 
@@ -35,7 +36,7 @@ namespace QRCodeACMnfp
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
             SetupDataGridView();
             CriarTabela();
             rdbManual.Checked = true;
@@ -61,7 +62,8 @@ namespace QRCodeACMnfp
                             SeleniumSetMethods.Click(driver, "btnSalvarNota", "Salvar Nota", "submit");
                         Notas.Add(new NotaFiscalValoresl(float.Parse(mskValor.Text.Replace(".", ","))));
                         MostrarNoGridView();
-
+                        lancamentos++;
+                        AtualizarValoresTotaisNaTela();
                     }
                     catch (Exception ex)
                     {
@@ -72,6 +74,15 @@ namespace QRCodeACMnfp
                     LimpaEFocaQRCode();
                 }
             }
+        }
+
+        private void AtualizarValoresTotaisNaTela()
+        {
+            lblNLancamentos.Text = lancamentos.ToString();
+            float soma = 0;
+            foreach (NotaFiscalValoresl nota in Notas)
+                soma += nota.Valor;
+            lblValorTotal.Text = soma.ToString("F");
         }
 
         private void LimpaEFocaQRCode()
@@ -136,21 +147,10 @@ namespace QRCodeACMnfp
             }
         }
 
-        private void button1_Click_1(object sender, EventArgs e) //fecha a aplicação
-        {
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            var result = MessageBox.Show("Já emitiu o Relatório?", "ATENÇÃO!", buttons);
-            if (result == System.Windows.Forms.DialogResult.Yes)
-            {
-                driver.Dispose();
-                Application.Exit();
-            }
-
-        }
-
         private void button2_Click(object sender, EventArgs e) //gera relatório
         {
             GerarRelatorio();
+            LimpaEFocaQRCode();
         }
 
         //PLANILHA
@@ -183,17 +183,17 @@ namespace QRCodeACMnfp
 
         private void FormatarCelula()
         {
-           
-                this.dataGridView1.Columns[0].DefaultCellStyle.Format = "C";
-                this.dataGridView1.Columns[1].DefaultCellStyle.Format = "C";
-                this.dataGridView1.Columns[2].DefaultCellStyle.Format = "C";
-                this.dataGridView1.Columns[3].DefaultCellStyle.Format = "C";
-                this.dataGridView1.Columns[4].DefaultCellStyle.Format = "C";
-                this.dataGridView1.Columns[5].DefaultCellStyle.Format = "C";
-                this.dataGridView1.Columns[6].DefaultCellStyle.Format = "C";
-                this.dataGridView1.Columns[7].DefaultCellStyle.Format = "C";
-                this.dataGridView1.Columns[8].DefaultCellStyle.Format = "C";
-                this.dataGridView1.Columns[9].DefaultCellStyle.Format = "C";
+
+            this.dataGridView1.Columns[0].DefaultCellStyle.Format = "C";
+            this.dataGridView1.Columns[1].DefaultCellStyle.Format = "C";
+            this.dataGridView1.Columns[2].DefaultCellStyle.Format = "C";
+            this.dataGridView1.Columns[3].DefaultCellStyle.Format = "C";
+            this.dataGridView1.Columns[4].DefaultCellStyle.Format = "C";
+            this.dataGridView1.Columns[5].DefaultCellStyle.Format = "C";
+            this.dataGridView1.Columns[6].DefaultCellStyle.Format = "C";
+            this.dataGridView1.Columns[7].DefaultCellStyle.Format = "C";
+            this.dataGridView1.Columns[8].DefaultCellStyle.Format = "C";
+            this.dataGridView1.Columns[9].DefaultCellStyle.Format = "C";
         }
 
         private void MostrarNoGridView()
@@ -232,12 +232,12 @@ namespace QRCodeACMnfp
                 {
                     dt.Columns.Add(coluna.Name, typeof(float));
                 }
-                foreach( DataGridViewRow linha in dataGridView1.Rows)
+                foreach (DataGridViewRow linha in dataGridView1.Rows)
                 {
                     DataRow drow = dt.NewRow();
-                    foreach( DataGridViewCell cell in linha.Cells)
+                    foreach (DataGridViewCell cell in linha.Cells)
                     {
-                        if(cell.Value == null)
+                        if (cell.Value == null)
                         {
                             cell.Value = 0f;
                         }
@@ -246,7 +246,7 @@ namespace QRCodeACMnfp
                     dt.Rows.Add(drow);
                 }
 
-                
+
                 var worksheet = workbook.AddWorksheet("Plan1");
                 worksheet.Cell("A1").InsertData(dt);
                 worksheet.Cell("A51").FormulaA1 = "=SUM(A1:A50)";
@@ -260,7 +260,7 @@ namespace QRCodeACMnfp
                 worksheet.Cell("I51").FormulaA1 = "=SUM(I1:I50)";
                 worksheet.Cell("J51").FormulaA1 = "=SUM(J1:J50)";
                 worksheet.Cell("K51").FormulaA1 = "=SUM(A51:J51)";
-                
+
 
                 workbook.SaveAs(enderecoSave + "Relatorio" + dataRelatorio + ".xlsx");
                 MessageBox.Show("Relatório Gerado em " + enderecoSave + " .");
@@ -304,9 +304,13 @@ namespace QRCodeACMnfp
 
         private void linkLabel1_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
         {
+            var icon = new MessageBoxIcon();
+
             try
             {
-                VisitLink();
+                var result = MessageBox.Show("Você será direcionado para o perfil profissional do Desenvolvedor.", "Info.", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (result == DialogResult.Yes)
+                    VisitLink();
             }
             catch (Exception ex)
             {
@@ -320,6 +324,52 @@ namespace QRCodeACMnfp
             System.Diagnostics.Process.Start("https://www.linkedin.com/in/anderson-silva-4b86413b/");
         }
 
+        private void button1_Click_1(object sender, EventArgs e) //fecha a aplicação
+        {
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            var result = MessageBox.Show("Já verificou se o relatorio foi emitido?", "LEMBRETE!", buttons, MessageBoxIcon.Question);
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                driver.Dispose();
+                Application.Exit();
+            }
+
+        }
+
+        //private void button3_Click(object sender, EventArgs e)
+        //{
+
+        //}
+
+        private void btnExcluirRegistro_Click(object sender, EventArgs e)
+        {
+            if (Notas.Count > 0)
+            {
+                var nota = Notas.Last();
+                lancamentos--;
+                nota.Valor = 0f;
+                MostrarNoGridView();
+                Notas.Remove(nota);
+                AtualizarValoresTotaisNaTela();
+                MostrarNoGridView();
+                MessageBox.Show("Último registro foi excluído!");
+            }
+            else
+            {
+                MessageBox.Show("Não há registros a serem excluídos", "Observação:", MessageBoxButtons.OK ,MessageBoxIcon.Exclamation);
+            }
+            LimpaEFocaQRCode();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            LimpaEFocaQRCode();
+            Notas.Clear();
+            lancamentos = 0;
+            AtualizarValoresTotaisNaTela();
+            MostrarNoGridView();
+            MessageBox.Show("Todos registros foram limpos.!");
+        }
     }
 }
 

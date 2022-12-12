@@ -47,8 +47,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.lblValorTotal = new System.Windows.Forms.Label();
+            this.lblNLancamentos = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.buttonPanel = new System.Windows.Forms.Panel();
@@ -56,6 +56,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.rdbManual = new System.Windows.Forms.RadioButton();
             this.rdbAutomatico = new System.Windows.Forms.RadioButton();
+            this.btnExcluirRegistro = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.buttonPanel.SuspendLayout();
@@ -237,25 +239,27 @@
             this.label9.TabIndex = 24;
             this.label9.Text = "Valor Total: ";
             // 
-            // label10
+            // lblValorTotal
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(294, 191);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(43, 18);
-            this.label10.TabIndex = 26;
-            this.label10.Text = "0,00";
+            this.lblValorTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblValorTotal.AutoSize = true;
+            this.lblValorTotal.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValorTotal.Location = new System.Drawing.Point(267, 191);
+            this.lblValorTotal.Name = "lblValorTotal";
+            this.lblValorTotal.Size = new System.Drawing.Size(43, 18);
+            this.lblValorTotal.TabIndex = 26;
+            this.lblValorTotal.Text = "0,00";
             // 
-            // label11
+            // lblNLancamentos
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(319, 150);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(18, 18);
-            this.label11.TabIndex = 25;
-            this.label11.Text = "0";
+            this.lblNLancamentos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNLancamentos.AutoSize = true;
+            this.lblNLancamentos.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNLancamentos.Location = new System.Drawing.Point(292, 149);
+            this.lblNLancamentos.Name = "lblNLancamentos";
+            this.lblNLancamentos.Size = new System.Drawing.Size(18, 18);
+            this.lblNLancamentos.TabIndex = 25;
+            this.lblNLancamentos.Text = "0";
             // 
             // button2
             // 
@@ -270,7 +274,10 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.ColumnHeadersVisible = false;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -334,18 +341,42 @@
             this.rdbAutomatico.Text = "Auto.";
             this.rdbAutomatico.UseVisualStyleBackColor = true;
             // 
+            // btnExcluirRegistro
+            // 
+            this.btnExcluirRegistro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluirRegistro.Location = new System.Drawing.Point(158, 388);
+            this.btnExcluirRegistro.Name = "btnExcluirRegistro";
+            this.btnExcluirRegistro.Size = new System.Drawing.Size(175, 61);
+            this.btnExcluirRegistro.TabIndex = 33;
+            this.btnExcluirRegistro.Text = "Excluir ultimo registro no relatório";
+            this.btnExcluirRegistro.UseVisualStyleBackColor = true;
+            this.btnExcluirRegistro.Click += new System.EventHandler(this.btnExcluirRegistro_Click);
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(158, 321);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(175, 61);
+            this.button3.TabIndex = 34;
+            this.button3.Text = "Limpar Registros e Iniciar Novo Relatorio";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1277, 461);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnExcluirRegistro);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnInformacoes);
             this.Controls.Add(this.buttonPanel);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label11);
+            this.Controls.Add(this.lblValorTotal);
+            this.Controls.Add(this.lblNLancamentos);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
@@ -395,8 +426,8 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblValorTotal;
+        private System.Windows.Forms.Label lblNLancamentos;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel buttonPanel;
@@ -404,5 +435,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RadioButton rdbManual;
         private System.Windows.Forms.RadioButton rdbAutomatico;
+        private System.Windows.Forms.Button btnExcluirRegistro;
+        private System.Windows.Forms.Button button3;
     }
 }
