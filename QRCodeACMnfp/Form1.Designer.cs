@@ -58,10 +58,12 @@
             this.rdbAutomatico = new System.Windows.Forms.RadioButton();
             this.btnExcluirRegistro = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.buttonPanel.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbl_Conteudo
@@ -116,24 +118,30 @@
             // 
             // txtCNPJ
             // 
+            this.txtCNPJ.Enabled = false;
             this.txtCNPJ.Location = new System.Drawing.Point(121, 38);
             this.txtCNPJ.Name = "txtCNPJ";
+            this.txtCNPJ.ReadOnly = true;
             this.txtCNPJ.Size = new System.Drawing.Size(211, 20);
             this.txtCNPJ.TabIndex = 8;
             this.txtCNPJ.TabStop = false;
             // 
             // txtData
             // 
+            this.txtData.Enabled = false;
             this.txtData.Location = new System.Drawing.Point(121, 64);
             this.txtData.Name = "txtData";
+            this.txtData.ReadOnly = true;
             this.txtData.Size = new System.Drawing.Size(111, 20);
             this.txtData.TabIndex = 9;
             this.txtData.TabStop = false;
             // 
             // txtExtrato
             // 
+            this.txtExtrato.Enabled = false;
             this.txtExtrato.Location = new System.Drawing.Point(120, 90);
             this.txtExtrato.Name = "txtExtrato";
+            this.txtExtrato.ReadOnly = true;
             this.txtExtrato.Size = new System.Drawing.Size(112, 20);
             this.txtExtrato.TabIndex = 10;
             this.txtExtrato.TabStop = false;
@@ -148,8 +156,10 @@
             // 
             // mskValor
             // 
+            this.mskValor.Enabled = false;
             this.mskValor.Location = new System.Drawing.Point(121, 116);
             this.mskValor.Name = "mskValor";
+            this.mskValor.ReadOnly = true;
             this.mskValor.Size = new System.Drawing.Size(111, 20);
             this.mskValor.TabIndex = 19;
             this.mskValor.TabStop = false;
@@ -193,7 +203,7 @@
             this.linkLabel1.Location = new System.Drawing.Point(43, 24);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(81, 13);
-            this.linkLabel1.TabIndex = 2;
+            this.linkLabel1.TabIndex = 7;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Anderson Silva";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
@@ -223,43 +233,43 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(120, 149);
+            this.label4.Location = new System.Drawing.Point(4, 8);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(132, 18);
+            this.label4.Size = new System.Drawing.Size(27, 18);
             this.label4.TabIndex = 23;
-            this.label4.Text = "Nº Lançamentos";
+            this.label4.Text = "Nº";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(120, 191);
+            this.label9.Location = new System.Drawing.Point(3, 35);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(97, 18);
+            this.label9.Size = new System.Drawing.Size(55, 18);
             this.label9.TabIndex = 24;
-            this.label9.Text = "Valor Total: ";
+            this.label9.Text = "Total: ";
             // 
             // lblValorTotal
             // 
-            this.lblValorTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblValorTotal.AutoSize = true;
+            this.lblValorTotal.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblValorTotal.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorTotal.Location = new System.Drawing.Point(267, 191);
+            this.lblValorTotal.Location = new System.Drawing.Point(54, 37);
             this.lblValorTotal.Name = "lblValorTotal";
-            this.lblValorTotal.Size = new System.Drawing.Size(43, 18);
+            this.lblValorTotal.Size = new System.Drawing.Size(141, 18);
             this.lblValorTotal.TabIndex = 26;
             this.lblValorTotal.Text = "0,00";
+            this.lblValorTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblNLancamentos
             // 
-            this.lblNLancamentos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblNLancamentos.AutoSize = true;
+            this.lblNLancamentos.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblNLancamentos.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNLancamentos.Location = new System.Drawing.Point(292, 149);
+            this.lblNLancamentos.Location = new System.Drawing.Point(57, 7);
             this.lblNLancamentos.Name = "lblNLancamentos";
-            this.lblNLancamentos.Size = new System.Drawing.Size(18, 18);
+            this.lblNLancamentos.Size = new System.Drawing.Size(138, 18);
             this.lblNLancamentos.TabIndex = 25;
             this.lblNLancamentos.Text = "0";
+            this.lblNLancamentos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // button2
             // 
@@ -283,10 +293,12 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(917, 437);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.TabStop = false;
+            this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
             // 
             // buttonPanel
             // 
@@ -315,7 +327,7 @@
             this.panel1.Location = new System.Drawing.Point(12, 149);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(102, 60);
-            this.panel1.TabIndex = 31;
+            this.panel1.TabIndex = 1;
             // 
             // rdbManual
             // 
@@ -328,6 +340,7 @@
             this.rdbManual.TabStop = true;
             this.rdbManual.Text = "Manual";
             this.rdbManual.UseVisualStyleBackColor = true;
+            this.rdbManual.CheckedChanged += new System.EventHandler(this.rdbManual_CheckedChanged);
             // 
             // rdbAutomatico
             // 
@@ -340,6 +353,7 @@
             this.rdbAutomatico.TabStop = true;
             this.rdbAutomatico.Text = "Auto.";
             this.rdbAutomatico.UseVisualStyleBackColor = true;
+            this.rdbAutomatico.CheckedChanged += new System.EventHandler(this.rdbAutomatico_CheckedChanged);
             // 
             // btnExcluirRegistro
             // 
@@ -347,7 +361,7 @@
             this.btnExcluirRegistro.Location = new System.Drawing.Point(158, 388);
             this.btnExcluirRegistro.Name = "btnExcluirRegistro";
             this.btnExcluirRegistro.Size = new System.Drawing.Size(175, 61);
-            this.btnExcluirRegistro.TabIndex = 33;
+            this.btnExcluirRegistro.TabIndex = 6;
             this.btnExcluirRegistro.Text = "Excluir ultimo registro no relatório";
             this.btnExcluirRegistro.UseVisualStyleBackColor = true;
             this.btnExcluirRegistro.Click += new System.EventHandler(this.btnExcluirRegistro_Click);
@@ -358,10 +372,21 @@
             this.button3.Location = new System.Drawing.Point(158, 321);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(175, 61);
-            this.button3.TabIndex = 34;
+            this.button3.TabIndex = 5;
             this.button3.Text = "Limpar Registros e Iniciar Novo Relatorio";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.label9);
+            this.panel3.Controls.Add(this.lblValorTotal);
+            this.panel3.Controls.Add(this.lblNLancamentos);
+            this.panel3.Location = new System.Drawing.Point(126, 149);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(206, 60);
+            this.panel3.TabIndex = 30;
             // 
             // Form1
             // 
@@ -369,16 +394,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1277, 461);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnExcluirRegistro);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnInformacoes);
             this.Controls.Add(this.buttonPanel);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.lblValorTotal);
-            this.Controls.Add(this.lblNLancamentos);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.mskValor);
@@ -402,6 +424,8 @@
             this.buttonPanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -437,5 +461,6 @@
         private System.Windows.Forms.RadioButton rdbAutomatico;
         private System.Windows.Forms.Button btnExcluirRegistro;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Panel panel3;
     }
 }

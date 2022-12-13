@@ -43,10 +43,10 @@ namespace QRCodeACMnfp
 
         public static void Click(IWebDriver driver, string element, string value, string elementtype)
         {
-            if (elementtype == "Id")
+            if (elementtype == "input")
                 driver.FindElement(By.Id(element)).Click();
-            if (elementtype == "Name")
-                driver.FindElement(By.Name(elementtype)).Click();
+            //if (elementtype == "Name")
+            //    driver.FindElement(By.Name(elementtype)).Click();
         }
 
         public static void SelectDropDown(IWebDriver driver, string element, string value, string elementtype)

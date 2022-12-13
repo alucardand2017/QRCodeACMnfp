@@ -8,10 +8,10 @@ namespace QRCodeACMnfp
 {
     class NotaFiscalValoresl
     {
-        public float Valor { get; set; }
+        public string Valor { get; set; }
        
 
-        public NotaFiscalValoresl(float valor)
+        public NotaFiscalValoresl(string valor)
         {
             Valor = valor;
         }

@@ -27,7 +27,6 @@ namespace QRCodeACMnfp
         }
         private IWebDriver driver = new ChromeDriver();
         private List<NotaFiscalValoresl> Notas = new List<NotaFiscalValoresl>();
-        private DataTable dt = new DataTable();
         int lancamentos = 0;
         private int capacidadePlanilha = 400;
         private string enderecoSave = @"C:\Users\ander\Downloads\";
@@ -38,7 +37,6 @@ namespace QRCodeACMnfp
         {
 
             SetupDataGridView();
-            CriarTabela();
             rdbManual.Checked = true;
             driver.Navigate().GoToUrl("https://www.nfp.fazenda.sp.gov.br/EntidadesFilantropicas/ListagemNotaEntidade.aspx");
             LimpaEFocaQRCode();
@@ -59,8 +57,8 @@ namespace QRCodeACMnfp
                         SeleniumSetMethods.EnterText(driver, txtCNPJ.Text, txtData.Text, mskValor.Text.Replace(".", "").Replace(",", ""), txtExtrato.Text);
                         SeleniumSetMethods.SelectDropDown(driver, "ddlTpNota", "Cupom Fiscal", "Id");
                         if (rdbAutomatico.Checked == true)
-                            SeleniumSetMethods.Click(driver, "btnSalvarNota", "Salvar Nota", "submit");
-                        Notas.Add(new NotaFiscalValoresl(float.Parse(mskValor.Text.Replace(".", ","))));
+                            SeleniumSetMethods.Click(driver, "btnSalvarNota", "Salvar Nota", "input");
+                        Notas.Add(new NotaFiscalValoresl(mskValor.Text.Replace(".", ",")));
                         MostrarNoGridView();
                         lancamentos++;
                         AtualizarValoresTotaisNaTela();
@@ -81,7 +79,7 @@ namespace QRCodeACMnfp
             lblNLancamentos.Text = lancamentos.ToString();
             float soma = 0;
             foreach (NotaFiscalValoresl nota in Notas)
-                soma += nota.Valor;
+                soma +=  float.Parse(nota.Valor);
             lblValorTotal.Text = soma.ToString("F");
         }
 
@@ -158,7 +156,7 @@ namespace QRCodeACMnfp
         private void SetupDataGridView()
         {
             dataGridView1.ColumnCount = 11;
-            dataGridView1.RowCount = 51;
+            dataGridView1.RowCount = 50;
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.MultiSelect = false;
@@ -184,16 +182,16 @@ namespace QRCodeACMnfp
         private void FormatarCelula()
         {
 
-            this.dataGridView1.Columns[0].DefaultCellStyle.Format = "C";
-            this.dataGridView1.Columns[1].DefaultCellStyle.Format = "C";
-            this.dataGridView1.Columns[2].DefaultCellStyle.Format = "C";
-            this.dataGridView1.Columns[3].DefaultCellStyle.Format = "C";
-            this.dataGridView1.Columns[4].DefaultCellStyle.Format = "C";
-            this.dataGridView1.Columns[5].DefaultCellStyle.Format = "C";
-            this.dataGridView1.Columns[6].DefaultCellStyle.Format = "C";
-            this.dataGridView1.Columns[7].DefaultCellStyle.Format = "C";
-            this.dataGridView1.Columns[8].DefaultCellStyle.Format = "C";
-            this.dataGridView1.Columns[9].DefaultCellStyle.Format = "C";
+            this.dataGridView1.Columns[0].DefaultCellStyle.Format = "N2";
+            this.dataGridView1.Columns[1].DefaultCellStyle.Format = "N2";
+            this.dataGridView1.Columns[2].DefaultCellStyle.Format = "N2";
+            this.dataGridView1.Columns[3].DefaultCellStyle.Format = "N2";
+            this.dataGridView1.Columns[4].DefaultCellStyle.Format = "N2";
+            this.dataGridView1.Columns[5].DefaultCellStyle.Format = "N2";
+            this.dataGridView1.Columns[6].DefaultCellStyle.Format = "N2";
+            this.dataGridView1.Columns[7].DefaultCellStyle.Format = "N2";
+            this.dataGridView1.Columns[8].DefaultCellStyle.Format = "N2";
+            this.dataGridView1.Columns[9].DefaultCellStyle.Format = "N2";
         }
 
         private void MostrarNoGridView()
@@ -211,10 +209,15 @@ namespace QRCodeACMnfp
                         MessageBox.Show("Não é possível adicionar mais valores!");
                         break;
                     }
+                    else
+                    {
+                        dataGridView1[coluna, linha].Value = nota.Valor.ToString();
+                        linha++;
+                    }
                 }
                 else
                 {
-                    dataGridView1[coluna, linha].Value = nota.Valor;
+                    dataGridView1[coluna, linha].Value = nota.Valor.ToString();
                     linha++;
                 }
             }
@@ -224,6 +227,11 @@ namespace QRCodeACMnfp
 
         private void GerarRelatorio()
         {
+            DataTable dt = new DataTable();
+            for (int i = 1; i <= 11; i++)
+            {
+                dt.Columns.Add("Coluna " + i, typeof(float));
+            }
             string dataRelatorio = DateTime.Now.ToString("ddMMyyyyHHmmss");
             using (var workbook = new XLWorkbook())
             {
@@ -246,7 +254,6 @@ namespace QRCodeACMnfp
                     dt.Rows.Add(drow);
                 }
 
-
                 var worksheet = workbook.AddWorksheet("Plan1");
                 worksheet.Cell("A1").InsertData(dt);
                 worksheet.Cell("A51").FormulaA1 = "=SUM(A1:A50)";
@@ -267,23 +274,6 @@ namespace QRCodeACMnfp
             }
 
             //Process.Start(new ProcessStartInfo(@"C:\Users\ander\Downloads\Relatorio" + dataRelatorio + ".xlsx") { UseShellExecute = true });
-
-
-        }
-
-        private void CriarTabela()
-        {
-            try
-            {
-                for (int i = 1; i <= 11; i++)
-                {
-                    dt.Columns.Add("Coluna " + i, typeof(float));
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
         }
 
         //INFORMAÇÕES
@@ -304,7 +294,6 @@ namespace QRCodeACMnfp
 
         private void linkLabel1_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
         {
-            var icon = new MessageBoxIcon();
 
             try
             {
@@ -316,6 +305,7 @@ namespace QRCodeACMnfp
             {
                 MessageBox.Show("Não foi possível visitar a página. :(  \n=> Erro: ", ex.Message);
             }
+            txtQRCode.Focus();
         }
 
         private void VisitLink()
@@ -333,13 +323,8 @@ namespace QRCodeACMnfp
                 driver.Dispose();
                 Application.Exit();
             }
-
+            txtQRCode.Focus();
         }
-
-        //private void button3_Click(object sender, EventArgs e)
-        //{
-
-        //}
 
         private void btnExcluirRegistro_Click(object sender, EventArgs e)
         {
@@ -347,7 +332,7 @@ namespace QRCodeACMnfp
             {
                 var nota = Notas.Last();
                 lancamentos--;
-                nota.Valor = 0f;
+                nota.Valor = 0.00f.ToString();
                 MostrarNoGridView();
                 Notas.Remove(nota);
                 AtualizarValoresTotaisNaTela();
@@ -356,19 +341,44 @@ namespace QRCodeACMnfp
             }
             else
             {
-                MessageBox.Show("Não há registros a serem excluídos", "Observação:", MessageBoxButtons.OK ,MessageBoxIcon.Exclamation);
+                MessageBox.Show("Não há registros a serem excluídos", "Observação:", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             LimpaEFocaQRCode();
+        } //exclui 1 registro
+
+        private void button3_Click(object sender, EventArgs e) //exclui todos registros
+        {
+
+            LimparTodosDados();
+            MessageBox.Show("Todos registros foram limpos.!");
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void LimparTodosDados()
         {
             LimpaEFocaQRCode();
-            Notas.Clear();
             lancamentos = 0;
-            AtualizarValoresTotaisNaTela();
+            foreach(var nota in Notas)
+            {
+                nota.Valor = 0.00f.ToString(); ;
+            }
             MostrarNoGridView();
-            MessageBox.Show("Todos registros foram limpos.!");
+            Notas.Clear();
+            AtualizarValoresTotaisNaTela();
+        }
+
+        private void rdbAutomatico_CheckedChanged(object sender, EventArgs e)
+        {
+            txtQRCode.Focus();
+        }
+
+        private void rdbManual_CheckedChanged(object sender, EventArgs e)
+        {
+            txtQRCode.Focus();
+        }
+
+        private void dataGridView1_Click(object sender, EventArgs e)
+        {
+            txtQRCode.Focus();
         }
     }
 }
