@@ -167,7 +167,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(126, 228);
+            this.button1.Location = new System.Drawing.Point(12, 316);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 40);
             this.button1.TabIndex = 3;
@@ -214,9 +214,9 @@
             this.label8.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(3, 42);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(62, 13);
+            this.label8.Size = new System.Drawing.Size(71, 13);
             this.label8.TabIndex = 3;
-            this.label8.Text = "Versão: 1.0";
+            this.label8.Text = "Versão: 1.0.0";
             // 
             // panel2
             // 
@@ -224,7 +224,7 @@
             this.panel2.Controls.Add(this.linkLabel1);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Location = new System.Drawing.Point(12, 388);
+            this.panel2.Location = new System.Drawing.Point(198, 388);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(139, 61);
             this.panel2.TabIndex = 21;
@@ -274,7 +274,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(12, 228);
+            this.button2.Location = new System.Drawing.Point(12, 223);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 40);
             this.button2.TabIndex = 2;
@@ -310,11 +310,11 @@
             // 
             // btnInformacoes
             // 
-            this.btnInformacoes.BackColor = System.Drawing.SystemColors.Info;
+            this.btnInformacoes.BackColor = System.Drawing.SystemColors.Control;
             this.btnInformacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInformacoes.Location = new System.Drawing.Point(240, 228);
+            this.btnInformacoes.Location = new System.Drawing.Point(12, 269);
             this.btnInformacoes.Name = "btnInformacoes";
-            this.btnInformacoes.Size = new System.Drawing.Size(92, 40);
+            this.btnInformacoes.Size = new System.Drawing.Size(100, 40);
             this.btnInformacoes.TabIndex = 4;
             this.btnInformacoes.Text = "Como usar?";
             this.btnInformacoes.UseVisualStyleBackColor = false;
@@ -358,9 +358,9 @@
             // btnExcluirRegistro
             // 
             this.btnExcluirRegistro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluirRegistro.Location = new System.Drawing.Point(158, 388);
+            this.btnExcluirRegistro.Location = new System.Drawing.Point(12, 362);
             this.btnExcluirRegistro.Name = "btnExcluirRegistro";
-            this.btnExcluirRegistro.Size = new System.Drawing.Size(175, 61);
+            this.btnExcluirRegistro.Size = new System.Drawing.Size(175, 40);
             this.btnExcluirRegistro.TabIndex = 6;
             this.btnExcluirRegistro.Text = "Excluir ultimo registro no relatório";
             this.btnExcluirRegistro.UseVisualStyleBackColor = true;
@@ -369,11 +369,12 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(158, 321);
+            this.button3.ForeColor = System.Drawing.Color.Red;
+            this.button3.Location = new System.Drawing.Point(12, 410);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(175, 61);
+            this.button3.Size = new System.Drawing.Size(175, 40);
             this.button3.TabIndex = 5;
-            this.button3.Text = "Limpar Registros e Iniciar Novo Relatorio";
+            this.button3.Text = "Limpar Todos Registros. ";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 

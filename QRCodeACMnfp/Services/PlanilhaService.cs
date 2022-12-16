@@ -1,0 +1,163 @@
+﻿using ClosedXML.Excel;
+using QRCodeACMnfp.Domain;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
+
+namespace QRCodeACMnfp.Services
+{
+    static class PlanilhaService
+    {
+        internal static void SetupDoGridView(DataGridView dataGridView1)
+        {
+            dataGridView1.ColumnCount = 11;
+            dataGridView1.RowCount = 50;
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.MultiSelect = false;
+
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.Font, FontStyle.Bold);
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.CellSelect;
+
+            dataGridView1.Name = "DataGridView1";
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.Single;
+            dataGridView1.GridColor = Color.LightBlue;
+            dataGridView1.RowHeadersVisible = false;
+
+            new Font(dataGridView1.DefaultCellStyle.Font, FontStyle.Italic);
+            dataGridView1.Dock = DockStyle.Fill;
+        }
+
+        internal static void FormatarCelulaDoGridView(DataGridView dataGridView1)
+        {
+            dataGridView1.Columns[0].DefaultCellStyle.Format = "N2";
+            dataGridView1.Columns[1].DefaultCellStyle.Format = "N2";
+            dataGridView1.Columns[2].DefaultCellStyle.Format = "N2";
+            dataGridView1.Columns[3].DefaultCellStyle.Format = "N2";
+            dataGridView1.Columns[4].DefaultCellStyle.Format = "N2";
+            dataGridView1.Columns[5].DefaultCellStyle.Format = "N2";
+            dataGridView1.Columns[6].DefaultCellStyle.Format = "N2";
+            dataGridView1.Columns[7].DefaultCellStyle.Format = "N2";
+            dataGridView1.Columns[8].DefaultCellStyle.Format = "N2";
+            dataGridView1.Columns[9].DefaultCellStyle.Format = "N2";
+            dataGridView1.Columns[10].DefaultCellStyle.Format = "N2";
+
+        }
+
+        internal static void CriaPlanilha(DataGridView dataGridView1, string enderecoSave)
+        {
+            DataTable dt = new DataTable();
+            CriaColuna(dt);
+            string dataRelatorio = CriaNomeDoRelatorio();
+            using (var workbook = new XLWorkbook())
+            {
+                CriaLinhaEPreencheValores(dataGridView1, dt);
+                InsereDadosTabela(dt, workbook);
+                SalvaTabela(enderecoSave, dataRelatorio, workbook);
+                InformaUsuario(enderecoSave);
+                AbreAplicativoPadrao( dataRelatorio);
+            }
+        }
+
+        private static void AbreAplicativoPadrao(string dataRelatorio)
+        {
+            Process.Start(new ProcessStartInfo(@"C:\Users\ander\Downloads\Relatorio" + dataRelatorio + ".xlsx") { UseShellExecute = true });
+        }
+
+        private static void InformaUsuario(string enderecoSave)
+        {
+            MessageBox.Show("Relatório Gerado em " + enderecoSave + " .");
+        }
+
+        private static void SalvaTabela(string enderecoSave, string dataRelatorio, XLWorkbook workbook)
+        {
+            workbook.SaveAs(enderecoSave + "Relatorio" + dataRelatorio + ".xlsx");
+        }
+
+        private static void InsereDadosTabela(DataTable dt, XLWorkbook workbook)
+        {
+            var worksheet = workbook.AddWorksheet("Plan1");
+            worksheet.Cell("A1").InsertData(dt);
+            worksheet.Cell("A51").FormulaA1 = "=SUM(A1:A50)";
+            worksheet.Cell("B51").FormulaA1 = "=SUM(B1:B50)";
+            worksheet.Cell("C51").FormulaA1 = "=SUM(C1:C50)";
+            worksheet.Cell("D51").FormulaA1 = "=SUM(D1:D50)";
+            worksheet.Cell("E51").FormulaA1 = "=SUM(E1:E50)";
+            worksheet.Cell("F51").FormulaA1 = "=SUM(F1:F50)";
+            worksheet.Cell("G51").FormulaA1 = "=SUM(G1:G50)";
+            worksheet.Cell("H51").FormulaA1 = "=SUM(H1:H50)";
+            worksheet.Cell("I51").FormulaA1 = "=SUM(I1:I50)";
+            worksheet.Cell("J51").FormulaA1 = "=SUM(J1:J50)";
+            worksheet.Cell("K51").FormulaA1 = "=SUM(A51:J51)";
+        }
+
+        private static void CriaLinhaEPreencheValores(DataGridView dataGridView1, DataTable dt)
+        {
+            foreach (DataGridViewColumn coluna in dataGridView1.Columns)
+            {
+                dt.Columns.Add(coluna.Name, typeof(float));
+            }
+            foreach (DataGridViewRow linha in dataGridView1.Rows)
+            {
+                PreencherCelulaValoresPadrao(dt, linha);
+            }
+        }
+
+        private static void PreencherCelulaValoresPadrao(DataTable dt, DataGridViewRow linha)
+        {
+            DataRow drow = dt.NewRow();
+            foreach (DataGridViewCell cell in linha.Cells)
+            {
+                if (cell.Value == null)
+                {
+                    cell.Value = 0f;
+                }
+                drow[cell.ColumnIndex] = cell.Value.ToString();
+            }
+            dt.Rows.Add(drow);
+        }
+
+        private static string CriaNomeDoRelatorio()
+        {
+            return DateTime.Now.ToString("ddMMyyyyHHmmss");
+        }
+
+        private static void CriaColuna(DataTable dt)
+        {
+            for (int i = 1; i <= 11; i++)
+            {
+                dt.Columns.Add("Coluna " + i, typeof(float));
+            }
+        }
+
+        internal static void ZeraValoresDeNotas(List<NotaFiscalValoresl> notas)
+        {
+            foreach (var nota in notas)
+                nota.Valor = 0.00f.ToString();  
+        }
+
+        internal static void ZeraUltimaNotaLancada(InformarcoesRelatorio relatorio)
+        {
+            var nota = relatorio.Notas.Last();
+            nota.Valor = 0.00f.ToString();
+        }
+
+        internal static void RemoveUltimaNotaLancada(InformarcoesRelatorio relatorio)
+        {
+            relatorio.Notas.Remove(relatorio.Notas.Last());
+        }
+
+        internal static void LimpaNotasDoRegistro(InformarcoesRelatorio relatorio)
+        {
+            relatorio.Notas.Clear();
+        }
+    }
+}
