@@ -13,18 +13,17 @@ namespace QRCodeACMnfp
         {
             InitializeComponent();
         }
-        private IWebDriver driver = new ChromeDriver();
-        //private List<NotaFiscalValoresl> Notas = new List<NotaFiscalValoresl>();
+        //private IWebDriver driver = new ChromeDriver();
         private InformarcoesRelatorio relatorio = new InformarcoesRelatorio();
         private int capacidadePlanilha = 400;
         private string enderecoSave = @"C:\Users\ander\Downloads\";
-
         //CONFIGURAÇÕES
         private void Form1_Load(object sender, EventArgs e)
         {
             try
             {
-                TelaPrincipalService.AbrirNavegadorEmNfp(driver);
+           
+                TelaPrincipalService.AbrirNavegadorEmNfp(SeleniumSetMethods.DriverChrome);
                 PlanilhaService.SetupDoGridView(dataGridView1);
                 PlanilhaService.FormatarCelulaDoGridView(dataGridView1);
                 rdbManual.Checked = true;
@@ -48,10 +47,10 @@ namespace QRCodeACMnfp
                     bool testeForms = ValidacaoService.TestaInformacoes(txtCNPJ, txtData, txtQRCode, mskValor); 
                     if (testeForms && relatorio.Notas.Count < capacidadePlanilha)
                     {
-                        SeleniumSetMethods.EnterText(driver, txtCNPJ.Text, txtData.Text, mskValor.Text.Replace(".", "").Replace(",", ""), txtExtrato.Text);
-                        SeleniumSetMethods.SelectDropDown(driver, "ddlTpNota", "Cupom Fiscal", "Id");
+                        SeleniumSetMethods.EnterText(SeleniumSetMethods.DriverChrome, txtCNPJ.Text, txtData.Text, mskValor.Text.Replace(".", "").Replace(",", ""), txtExtrato.Text);
+                        SeleniumSetMethods.SelectDropDown(SeleniumSetMethods.DriverChrome, "ddlTpNota", "Cupom Fiscal", "Id");
                         if (rdbAutomatico.Checked == true)
-                            SeleniumSetMethods.Click(driver, "btnSalvarNota", "Salvar Nota", "input");
+                            SeleniumSetMethods.Click(SeleniumSetMethods.DriverChrome, "btnSalvarNota", "Salvar Nota", "input");
                         relatorio.Notas.Add(new NotaFiscalValoresl(mskValor.Text.Replace(".", ",")));
                         TelaPrincipalService.MostrarNoGridView(dataGridView1, relatorio.Notas);
                         TelaPrincipalService.AtualizarValoresTotaisNaTela(lblNLancamentos, lblValorTotal, relatorio);
@@ -142,7 +141,7 @@ namespace QRCodeACMnfp
         {
             try
             {
-                TelaPrincipalService.PerguntaDeFecharAplicacao(driver);
+                TelaPrincipalService.PerguntaDeFecharAplicacao(SeleniumSetMethods.DriverChrome);
             }
             catch (ApplicationException ex)
             {

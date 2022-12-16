@@ -1,10 +1,15 @@
 ﻿using OpenQA.Selenium;
 using System;
 using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium.Chrome;
+
 namespace QRCodeACMnfp
 {
     class SeleniumSetMethods
     {
+        public static IWebDriver DriverChrome { get; set; } = new ChromeDriver();
+
+
         public static void EnterText(IWebDriver driver, string cnpj, string data, string valor, string extrato)
         {
             try
