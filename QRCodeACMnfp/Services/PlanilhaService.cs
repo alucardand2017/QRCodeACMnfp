@@ -5,13 +5,30 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
 namespace QRCodeACMnfp.Services
 {
-    static class PlanilhaService
+
+    internal sealed class PlanilhaService
     {
+        public static InformarcoesRelatorio Relatorio { get; set; } = new InformarcoesRelatorio();
+
+        public static readonly int capacidadePlanilha = 400;
+
+        public static readonly string enderecoSave = @"C:\Dados_De_Relatorio\";
+
+        internal static void CriarDiretorio()
+        {
+            if (!Directory.Exists(enderecoSave))
+            {
+                Directory.CreateDirectory(enderecoSave);
+            }
+
+        }
+
         internal static void SetupDoGridView(DataGridView dataGridView1)
         {
             dataGridView1.ColumnCount = 11;
@@ -52,19 +69,41 @@ namespace QRCodeACMnfp.Services
 
         }
 
-        internal static void CriaPlanilha(DataGridView dataGridView1, string enderecoSave)
+        internal static void CriarRelatorio(DataGridView dataGridView1, string enderecoSave)
         {
             DataTable dt = new DataTable();
             CriaColuna(dt);
-            string dataRelatorio = CriaNomeDoRelatorio();
+            string dataRelatorio = InserirDataNomeRelatorio();
             using (var workbook = new XLWorkbook())
             {
-                CriaLinhaEPreencheValores(dataGridView1, dt);
-                InsereDadosTabela(dt, workbook);
-                SalvaTabela(enderecoSave, dataRelatorio, workbook);
+                CriaEstruturaRelatorio(dataGridView1, dt);
+                InsereDadosRelatorio(dt, workbook);
+                SalvarRelatorio(enderecoSave, dataRelatorio, workbook);
                 InformaUsuario(enderecoSave);
-                AbreAplicativoPadrao( dataRelatorio);
+                AbreAplicativoPadrao(dataRelatorio);
             }
+        }
+
+        internal static void ZeraValoresDeNotas(List<NotaFiscalValoresl> notas)
+        {
+            foreach (var nota in notas)
+                nota.Valor = "0,00".ToString();
+        }
+
+        internal static void ZeraUltimaNotaLancada(InformarcoesRelatorio relatorio)
+        {
+            var nota = relatorio.Notas.Last();
+            nota.Valor = "0,00".ToString();
+        }
+
+        internal static void RemoveUltimaNotaLancada(InformarcoesRelatorio relatorio)
+        {
+            relatorio.Notas.Remove(relatorio.Notas.Last());
+        }
+
+        internal static void LimpaNotasDoRegistro(InformarcoesRelatorio relatorio)
+        {
+            relatorio.Notas.Clear();
         }
 
         private static void AbreAplicativoPadrao(string dataRelatorio)
@@ -77,29 +116,48 @@ namespace QRCodeACMnfp.Services
             MessageBox.Show("Relatório Gerado em " + enderecoSave + " .");
         }
 
-        private static void SalvaTabela(string enderecoSave, string dataRelatorio, XLWorkbook workbook)
+        private static void SalvarRelatorio(string enderecoSave, string dataRelatorio, XLWorkbook workbook)
         {
-            workbook.SaveAs(enderecoSave + "Relatorio" + dataRelatorio + ".xlsx");
+            workbook.SaveAs(enderecoSave + "Relatorio_" + dataRelatorio + ".xlsx");
         }
 
-        private static void InsereDadosTabela(DataTable dt, XLWorkbook workbook)
+        private static void InsereDadosRelatorio(DataTable dt, XLWorkbook workbook)
         {
             var worksheet = workbook.AddWorksheet("Plan1");
             worksheet.Cell("A1").InsertData(dt);
-            worksheet.Cell("A51").FormulaA1 = "=SUM(A1:A50)";
-            worksheet.Cell("B51").FormulaA1 = "=SUM(B1:B50)";
-            worksheet.Cell("C51").FormulaA1 = "=SUM(C1:C50)";
-            worksheet.Cell("D51").FormulaA1 = "=SUM(D1:D50)";
-            worksheet.Cell("E51").FormulaA1 = "=SUM(E1:E50)";
-            worksheet.Cell("F51").FormulaA1 = "=SUM(F1:F50)";
-            worksheet.Cell("G51").FormulaA1 = "=SUM(G1:G50)";
-            worksheet.Cell("H51").FormulaA1 = "=SUM(H1:H50)";
-            worksheet.Cell("I51").FormulaA1 = "=SUM(I1:I50)";
-            worksheet.Cell("J51").FormulaA1 = "=SUM(J1:J50)";
-            worksheet.Cell("K51").FormulaA1 = "=SUM(A51:J51)";
+            SetupTabela(worksheet);
         }
 
-        private static void CriaLinhaEPreencheValores(DataGridView dataGridView1, DataTable dt)
+        private static void SetupTabela(IXLWorksheet wb)
+        {
+            wb.ColumnWidth = 15f;
+
+
+            wb.Cell("A51").FormulaA1 = "=SUM(A1:A50)";
+            wb.Cell("B51").FormulaA1 = "=SUM(B1:B50)";
+            wb.Cell("C51").FormulaA1 = "=SUM(C1:C50)";
+            wb.Cell("D51").FormulaA1 = "=SUM(D1:D50)";
+            wb.Cell("E51").FormulaA1 = "=SUM(E1:E50)";
+            wb.Cell("F51").FormulaA1 = "=SUM(F1:F50)";
+            wb.Cell("G51").FormulaA1 = "=SUM(G1:G50)";
+            wb.Cell("H51").FormulaA1 = "=SUM(H1:H50)";
+            wb.Cell("I51").FormulaA1 = "=SUM(I1:I50)";
+            wb.Cell("J51").FormulaA1 = "=SUM(J1:J50)";
+            wb.Cell("K51").FormulaA1 = "=SUM(A51:J51)";
+
+            wb.Cells("A1:K50").Style
+                .Border.SetTopBorder(XLBorderStyleValues.Thin)
+                .Border.SetRightBorder(XLBorderStyleValues.Thin)
+                .Border.SetBottomBorder(XLBorderStyleValues.Thin)
+                .Border.SetLeftBorder(XLBorderStyleValues.Thin)
+                .Border.SetOutsideBorderColor(XLColor.Black)
+                .Font.SetFontName("Calibri")
+                .Font.SetFontSize(11)
+                ;
+            wb.Cells("A1:K51").Style.NumberFormat.Format = "0.00";
+        }
+
+        private static void CriaEstruturaRelatorio(DataGridView dataGridView1, DataTable dt)
         {
             foreach (DataGridViewColumn coluna in dataGridView1.Columns)
             {
@@ -118,14 +176,14 @@ namespace QRCodeACMnfp.Services
             {
                 if (cell.Value == null)
                 {
-                    cell.Value = 0f;
+                    cell.Value = "0.00";
                 }
                 drow[cell.ColumnIndex] = cell.Value.ToString();
             }
             dt.Rows.Add(drow);
         }
 
-        private static string CriaNomeDoRelatorio()
+        private static string InserirDataNomeRelatorio()
         {
             return DateTime.Now.ToString("ddMMyyyyHHmmss");
         }
@@ -136,28 +194,6 @@ namespace QRCodeACMnfp.Services
             {
                 dt.Columns.Add("Coluna " + i, typeof(float));
             }
-        }
-
-        internal static void ZeraValoresDeNotas(List<NotaFiscalValoresl> notas)
-        {
-            foreach (var nota in notas)
-                nota.Valor = 0.00f.ToString();  
-        }
-
-        internal static void ZeraUltimaNotaLancada(InformarcoesRelatorio relatorio)
-        {
-            var nota = relatorio.Notas.Last();
-            nota.Valor = 0.00f.ToString();
-        }
-
-        internal static void RemoveUltimaNotaLancada(InformarcoesRelatorio relatorio)
-        {
-            relatorio.Notas.Remove(relatorio.Notas.Last());
-        }
-
-        internal static void LimpaNotasDoRegistro(InformarcoesRelatorio relatorio)
-        {
-            relatorio.Notas.Clear();
         }
     }
 }

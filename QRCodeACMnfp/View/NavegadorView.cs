@@ -2,13 +2,15 @@
 using System;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Chrome;
+using System.IO;
+using System.Reflection;
 
 namespace QRCodeACMnfp
 {
-    class SeleniumSetMethods
+    class NavegadorView
     {
-        public static IWebDriver DriverChrome { get; set; } = new ChromeDriver();
 
+        public static IWebDriver DriverChrome { get; set; } = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
 
         public static void EnterText(IWebDriver driver, string cnpj, string data, string valor, string extrato)
         {

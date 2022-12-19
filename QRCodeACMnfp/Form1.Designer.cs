@@ -167,9 +167,9 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(12, 316);
+            this.button1.Location = new System.Drawing.Point(197, 411);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 40);
+            this.button1.Size = new System.Drawing.Size(136, 40);
             this.button1.TabIndex = 3;
             this.button1.Text = "Fechar App";
             this.button1.UseVisualStyleBackColor = true;
@@ -224,7 +224,7 @@
             this.panel2.Controls.Add(this.linkLabel1);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Location = new System.Drawing.Point(198, 388);
+            this.panel2.Location = new System.Drawing.Point(12, 388);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(139, 61);
             this.panel2.TabIndex = 21;
@@ -274,9 +274,9 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(12, 223);
+            this.button2.Location = new System.Drawing.Point(197, 273);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 40);
+            this.button2.Size = new System.Drawing.Size(139, 40);
             this.button2.TabIndex = 2;
             this.button2.Text = "Gerar Relatório";
             this.button2.UseVisualStyleBackColor = true;
@@ -312,7 +312,7 @@
             // 
             this.btnInformacoes.BackColor = System.Drawing.SystemColors.Control;
             this.btnInformacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInformacoes.Location = new System.Drawing.Point(12, 269);
+            this.btnInformacoes.Location = new System.Drawing.Point(12, 342);
             this.btnInformacoes.Name = "btnInformacoes";
             this.btnInformacoes.Size = new System.Drawing.Size(100, 40);
             this.btnInformacoes.TabIndex = 4;
@@ -324,7 +324,7 @@
             // 
             this.panel1.Controls.Add(this.rdbManual);
             this.panel1.Controls.Add(this.rdbAutomatico);
-            this.panel1.Location = new System.Drawing.Point(12, 149);
+            this.panel1.Location = new System.Drawing.Point(12, 144);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(102, 60);
             this.panel1.TabIndex = 1;
@@ -358,11 +358,11 @@
             // btnExcluirRegistro
             // 
             this.btnExcluirRegistro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluirRegistro.Location = new System.Drawing.Point(12, 362);
+            this.btnExcluirRegistro.Location = new System.Drawing.Point(197, 319);
             this.btnExcluirRegistro.Name = "btnExcluirRegistro";
-            this.btnExcluirRegistro.Size = new System.Drawing.Size(175, 40);
+            this.btnExcluirRegistro.Size = new System.Drawing.Size(139, 40);
             this.btnExcluirRegistro.TabIndex = 6;
-            this.btnExcluirRegistro.Text = "Excluir ultimo registro no relatório";
+            this.btnExcluirRegistro.Text = "Excluir ultimo registro";
             this.btnExcluirRegistro.UseVisualStyleBackColor = true;
             this.btnExcluirRegistro.Click += new System.EventHandler(this.btnExcluirRegistro_Click);
             // 
@@ -370,9 +370,9 @@
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.Red;
-            this.button3.Location = new System.Drawing.Point(12, 410);
+            this.button3.Location = new System.Drawing.Point(197, 365);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(175, 40);
+            this.button3.Size = new System.Drawing.Size(139, 40);
             this.button3.TabIndex = 5;
             this.button3.Text = "Limpar Todos Registros. ";
             this.button3.UseVisualStyleBackColor = true;
@@ -384,7 +384,7 @@
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.lblValorTotal);
             this.panel3.Controls.Add(this.lblNLancamentos);
-            this.panel3.Location = new System.Drawing.Point(126, 149);
+            this.panel3.Location = new System.Drawing.Point(126, 144);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(206, 60);
             this.panel3.TabIndex = 30;

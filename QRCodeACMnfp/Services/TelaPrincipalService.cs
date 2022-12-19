@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace QRCodeACMnfp.Services
 {
-    class TelaPrincipalService
+    internal sealed class TelaPrincipalService
     {
         internal static void AtualizarValoresTotaisNaTela(Label lancamentos, Label valorTotal, InformarcoesRelatorio informacoes)
         {
@@ -45,16 +45,17 @@ namespace QRCodeACMnfp.Services
 
         internal static void AbrirNavegadorEmNfp(IWebDriver driver)
         {
-            driver.Navigate().GoToUrl("https://www.nfp.fazenda.sp.gov.br/EntidadesFilantropicas/ListagemNotaEntidade.aspx");
+           driver.Navigate().GoToUrl("https://www.nfp.fazenda.sp.gov.br/EntidadesFilantropicas/ListagemNotaEntidade.aspx");
         }
 
         internal static void ManualDoUsuario(string enderecoSave)
         {
             MessageBox.Show("MANUAL DO USUÁRIO: " +
                 "\n\n 1) Ao iniciar a aplicação, uma tela do navegador Chrome vai abrir, faça o login e navegue nas informações até chegar no formulário 'Cadastro de doação de documento fiscal' normalmente." +
+                " Em seguida selecione o modo de uso (automático ou manual). Por fim, escaneie o QRCode do documento. Fácil né ? :)" +
                 "\n\n 2) Alguns documentos, apesar de possuir código de barras, podem apresentar falhas na impressão (o que gera a demora para leitura dos dados). Além disso," +
                 "alguns documentos não são exatamente 'Cupom fiscal Eletronico', são de outra natureza, como 'Documento auxiliar da Nota Fiscal Eletrônica' por exemplo. Esses documentos não são" +
-                "lidos pelo programa corretamente." +
+                " lidos pelo programa corretamente." +
                 "\n\n 3) Quando escaneado, o programa preenche os campo da página com os valores mostrados nos respectivos campos do programa. " +
                 "\n\n 4) As escolha 'automática' envia os dados para o site e 'Salva a Nota', estando apto a escanear a próxima." +
                 "\n\n 5) A escolha 'manual' apenas preenche o formulário do Site, cabendo a você salvar a nota no site, e retornar ao programa no campo 'QRCode'." +
@@ -69,12 +70,6 @@ namespace QRCodeACMnfp.Services
             var result = MessageBox.Show("Você será direcionado para o perfil profissional do Desenvolvedor.", "Info.", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (result == DialogResult.Yes)
                 VisitLink( linkLabel1);
-        }
-
-        private static void VisitLink(LinkLabel linkLabel1)
-        {
-            linkLabel1.LinkVisited = true;
-            System.Diagnostics.Process.Start("https://www.linkedin.com/in/anderson-silva-4b86413b/");
         }
 
         internal static void LimpaFormulario(TextBox txtQRCode, TextBox txtCNPJ, TextBox txtData, TextBox txtExtrato, MaskedTextBox mskValor)
@@ -104,6 +99,12 @@ namespace QRCodeACMnfp.Services
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             var result = MessageBox.Show("Certeza desse comando?", "LEMBRETE!", buttons, MessageBoxIcon.Question);
             return result;
+        }
+
+        private static void VisitLink(LinkLabel linkLabel1)
+        {
+            linkLabel1.LinkVisited = true;
+            System.Diagnostics.Process.Start("https://www.linkedin.com/in/anderson-silva-4b86413b/");
         }
     }
 }

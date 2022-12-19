@@ -4,6 +4,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using QRCodeACMnfp.Services;
 using QRCodeACMnfp.Domain;
+using DocumentFormat.OpenXml.Bibliography;
 
 namespace QRCodeACMnfp
 {
@@ -12,21 +13,16 @@ namespace QRCodeACMnfp
         public Form1()
         {
             InitializeComponent();
-        }
-        //private IWebDriver driver = new ChromeDriver();
-        private InformarcoesRelatorio relatorio = new InformarcoesRelatorio();
-        private int capacidadePlanilha = 400;
-        private string enderecoSave = @"C:\Users\ander\Downloads\";
-        //CONFIGURAÇÕES
+        }        
         private void Form1_Load(object sender, EventArgs e)
         {
             try
             {
-           
-                TelaPrincipalService.AbrirNavegadorEmNfp(SeleniumSetMethods.DriverChrome);
+                PlanilhaService.CriarDiretorio();
+                TelaPrincipalService.AbrirNavegadorEmNfp(NavegadorView.DriverChrome);
                 PlanilhaService.SetupDoGridView(dataGridView1);
                 PlanilhaService.FormatarCelulaDoGridView(dataGridView1);
-                rdbManual.Checked = true;
+                rdbManual.Checked = true; //modo manual ativado de inicio
                 LimparCamposFormulario();
             }
             catch (Exception ex)
@@ -36,24 +32,27 @@ namespace QRCodeACMnfp
 
         }
 
-        //FUNÇÕES
-        private void txtQRCode_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        private void txtQRCode_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) //Entrada Principal
         {
             try
             {
                 if (e.KeyCode == System.Windows.Forms.Keys.Enter)
                 {
-                    ValidacaoService.SepararCamposQRCode(txtQRCode.Text.Trim(), txtCNPJ, txtData, txtExtrato, mskValor);
-                    bool testeForms = ValidacaoService.TestaInformacoes(txtCNPJ, txtData, txtQRCode, mskValor); 
-                    if (testeForms && relatorio.Notas.Count < capacidadePlanilha)
+                    Formulario formulario = new Formulario( txtQRCode, txtCNPJ, txtData, txtExtrato, mskValor);
+
+                    //ValidacaoService.SepararCamposQRCode(txtQRCode.Text.Trim(), txtCNPJ, txtData, txtExtrato, mskValor);
+                    ValidacaoService.SepararCamposQRCode(formulario);
+                    //bool testeForms = ValidacaoService.TestaInformacoes(txtCNPJ, txtData, txtQRCode, mskValor);
+                    bool testeForms = ValidacaoService.TestaInformacoes(formulario);
+                    if (testeForms && PlanilhaService.Relatorio.Notas.Count < PlanilhaService.capacidadePlanilha)
                     {
-                        SeleniumSetMethods.EnterText(SeleniumSetMethods.DriverChrome, txtCNPJ.Text, txtData.Text, mskValor.Text.Replace(".", "").Replace(",", ""), txtExtrato.Text);
-                        SeleniumSetMethods.SelectDropDown(SeleniumSetMethods.DriverChrome, "ddlTpNota", "Cupom Fiscal", "Id");
+                        NavegadorView.EnterText(NavegadorView.DriverChrome, txtCNPJ.Text, txtData.Text, mskValor.Text.Replace(".", "").Replace(",", ""), txtExtrato.Text);
+                        NavegadorView.SelectDropDown(NavegadorView.DriverChrome, "ddlTpNota", "Cupom Fiscal", "Id");
                         if (rdbAutomatico.Checked == true)
-                            SeleniumSetMethods.Click(SeleniumSetMethods.DriverChrome, "btnSalvarNota", "Salvar Nota", "input");
-                        relatorio.Notas.Add(new NotaFiscalValoresl(mskValor.Text.Replace(".", ",")));
-                        TelaPrincipalService.MostrarNoGridView(dataGridView1, relatorio.Notas);
-                        TelaPrincipalService.AtualizarValoresTotaisNaTela(lblNLancamentos, lblValorTotal, relatorio);
+                            NavegadorView.Click(NavegadorView.DriverChrome, "btnSalvarNota", "Salvar Nota", "input");
+                        PlanilhaService.Relatorio.Notas.Add(new NotaFiscalValoresl(mskValor.Text.Replace(".", ",")));
+                        TelaPrincipalService.MostrarNoGridView(dataGridView1, PlanilhaService.Relatorio.Notas);
+                        TelaPrincipalService.AtualizarValoresTotaisNaTela(lblNLancamentos, lblValorTotal, PlanilhaService.Relatorio);
                         LimparCamposFormulario();
                     }
                 }
@@ -65,7 +64,7 @@ namespace QRCodeACMnfp
             }
             catch (ApplicationException ex)
             {
-                MessageBox.Show(ex.Message, "Erro de  aplicação.");
+                MessageBox.Show(ex.Message, "Erro da aplicação.");
                 LimparCamposFormulario();
 
             }
@@ -79,23 +78,24 @@ namespace QRCodeACMnfp
                 MessageBox.Show(ex.Message, "Erro na captura do Botão.");
                 LimparCamposFormulario();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Verifique se está logado e na página de inserção de notas fiscais corretamente.", "Erro Geral no envio de dados para tabela", MessageBoxButtons.OK);
+                MessageBox.Show("Verifique se está logado e na página de inserção de notas fiscais corretamente e se está na página de inserção de dados da Nota Fiscal. \n\n" + ex.Message, "Erro Geral no envio de dados para tabela", MessageBoxButtons.OK);
                 LimparCamposFormulario();
             }
-        } //Entrada Principal
+        } 
 
         private void LimparCamposFormulario()
         {
             TelaPrincipalService.LimpaFormulario(txtQRCode, txtCNPJ, txtData, txtExtrato, mskValor);
             FocoPrincipal();
         }
+
         private void button2_Click(object sender, EventArgs e) //gera relatório // exception ok
         {
             try
             {
-                PlanilhaService.CriaPlanilha(dataGridView1, enderecoSave);
+                PlanilhaService.CriarRelatorio(dataGridView1, PlanilhaService.enderecoSave);
                 LimparCamposFormulario();
             }
             catch (Exception ex)
@@ -104,12 +104,11 @@ namespace QRCodeACMnfp
             }
         }
 
-
         private void btnInformacoes_Click(object sender, EventArgs e)
         {
             try
             {
-                TelaPrincipalService.ManualDoUsuario(enderecoSave);
+                TelaPrincipalService.ManualDoUsuario(PlanilhaService.enderecoSave);
             }
             catch (Exception ex)
             {
@@ -141,7 +140,7 @@ namespace QRCodeACMnfp
         {
             try
             {
-                TelaPrincipalService.PerguntaDeFecharAplicacao(SeleniumSetMethods.DriverChrome);
+                TelaPrincipalService.PerguntaDeFecharAplicacao(NavegadorView.DriverChrome);
             }
             catch (ApplicationException ex)
             {
@@ -157,13 +156,13 @@ namespace QRCodeACMnfp
         {
             try
             {
-                if (relatorio.Notas.Count > 0)
+                if (PlanilhaService.Relatorio.Notas.Count > 0)
                 {
-                    PlanilhaService.ZeraUltimaNotaLancada(relatorio); //zera para mostrar no grid
-                    TelaPrincipalService.MostrarNoGridView(dataGridView1, relatorio.Notas);
-                    PlanilhaService.RemoveUltimaNotaLancada(relatorio); //depois de mostrar zerado no grid removemos o registro.
-                    TelaPrincipalService.AtualizarValoresTotaisNaTela(lblNLancamentos, lblValorTotal, relatorio);
-                    TelaPrincipalService.MostrarNoGridView(dataGridView1, relatorio.Notas);
+                    PlanilhaService.ZeraUltimaNotaLancada(PlanilhaService.Relatorio); //zera para mostrar no grid
+                    TelaPrincipalService.MostrarNoGridView(dataGridView1, PlanilhaService.Relatorio.Notas);
+                    PlanilhaService.RemoveUltimaNotaLancada(PlanilhaService.Relatorio); //depois de mostrar zerado no grid removemos o registro.
+                    TelaPrincipalService.AtualizarValoresTotaisNaTela(lblNLancamentos, lblValorTotal, PlanilhaService.Relatorio);
+                    TelaPrincipalService.MostrarNoGridView(dataGridView1, PlanilhaService.Relatorio.Notas);
                     MessageBox.Show("Último registro foi excluído!");
                 }
                 else
@@ -201,10 +200,10 @@ namespace QRCodeACMnfp
 
         private void LimparTodosDados()
         {
-            PlanilhaService.ZeraValoresDeNotas(relatorio.Notas);
-            TelaPrincipalService.MostrarNoGridView(dataGridView1, relatorio.Notas);
-            PlanilhaService.LimpaNotasDoRegistro(relatorio);
-            TelaPrincipalService.AtualizarValoresTotaisNaTela(lblNLancamentos, lblValorTotal, relatorio);
+            PlanilhaService.ZeraValoresDeNotas(PlanilhaService.Relatorio.Notas);
+            TelaPrincipalService.MostrarNoGridView(dataGridView1, PlanilhaService.Relatorio.Notas);
+            PlanilhaService.LimpaNotasDoRegistro(PlanilhaService.Relatorio);
+            TelaPrincipalService.AtualizarValoresTotaisNaTela(lblNLancamentos, lblValorTotal, PlanilhaService.Relatorio);
             MessageBox.Show("Todos registros foram limpos.!");
             LimparCamposFormulario();
         }
@@ -228,6 +227,8 @@ namespace QRCodeACMnfp
         {
             txtQRCode.Focus();
         }
+
+
     }
 }
 
