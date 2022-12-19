@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace QRCodeACMnfp.Domain
 {
-    internal class Formulario : Form
+    internal class Formulario
     {
         public TextBox Qrcode { get; set; }
         public TextBox Cnpj { get; set; }
