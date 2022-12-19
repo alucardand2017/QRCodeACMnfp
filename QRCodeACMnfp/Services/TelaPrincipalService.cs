@@ -45,7 +45,7 @@ namespace QRCodeACMnfp.Services
 
         internal static void AbrirNavegadorEmNfp(IWebDriver driver)
         {
-           driver.Navigate().GoToUrl("https://www.nfp.fazenda.sp.gov.br/EntidadesFilantropicas/ListagemNotaEntidade.aspx");
+            driver.Navigate().GoToUrl("https://www.nfp.fazenda.sp.gov.br/EntidadesFilantropicas/ListagemNotaEntidade.aspx");
         }
 
         internal static void ManualDoUsuario(string enderecoSave)
@@ -69,18 +69,7 @@ namespace QRCodeACMnfp.Services
         {
             var result = MessageBox.Show("Você será direcionado para o perfil profissional do Desenvolvedor.", "Info.", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (result == DialogResult.Yes)
-                VisitLink( linkLabel1);
-        }
-
-        internal static void LimpaFormulario(TextBox txtQRCode, TextBox txtCNPJ, TextBox txtData, TextBox txtExtrato, MaskedTextBox mskValor)
-        {
-            txtQRCode.Text.Trim();
-            txtQRCode.Text = string.Empty;
-            txtQRCode.ClearUndo();
-            txtCNPJ.Clear();
-            txtData.Clear();
-            txtExtrato.Clear();
-            mskValor.Clear();
+                VisitLink(linkLabel1);
         }
 
         internal static void PerguntaDeFecharAplicacao(IWebDriver driver)
@@ -105,6 +94,17 @@ namespace QRCodeACMnfp.Services
         {
             linkLabel1.LinkVisited = true;
             System.Diagnostics.Process.Start("https://www.linkedin.com/in/anderson-silva-4b86413b/");
+        }
+
+        internal static void LimpaFormulario(Formulario formulario)
+        {
+            formulario.Qrcode.Text.Trim();
+            formulario.Qrcode.Text = string.Empty;
+            formulario.Qrcode.ClearUndo();
+            formulario.Cnpj.Clear();
+            formulario.Data.Clear();
+            formulario.Extrato.Clear();
+            formulario.Valor.Clear();
         }
     }
 }

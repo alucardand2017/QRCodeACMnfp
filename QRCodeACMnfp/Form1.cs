@@ -39,18 +39,15 @@ namespace QRCodeACMnfp
                 if (e.KeyCode == System.Windows.Forms.Keys.Enter)
                 {
                     Formulario formulario = new Formulario( txtQRCode, txtCNPJ, txtData, txtExtrato, mskValor);
-
-                    //ValidacaoService.SepararCamposQRCode(txtQRCode.Text.Trim(), txtCNPJ, txtData, txtExtrato, mskValor);
                     ValidacaoService.SepararCamposQRCode(formulario);
-                    //bool testeForms = ValidacaoService.TestaInformacoes(txtCNPJ, txtData, txtQRCode, mskValor);
                     bool testeForms = ValidacaoService.TestaInformacoes(formulario);
                     if (testeForms && PlanilhaService.Relatorio.Notas.Count < PlanilhaService.capacidadePlanilha)
                     {
-                        NavegadorView.EnterText(NavegadorView.DriverChrome, txtCNPJ.Text, txtData.Text, mskValor.Text.Replace(".", "").Replace(",", ""), txtExtrato.Text);
-                        NavegadorView.SelectDropDown(NavegadorView.DriverChrome, "ddlTpNota", "Cupom Fiscal", "Id");
+                        NavegadorView.EnterText(NavegadorView.DriverChrome, formulario);
+                        NavegadorView.SelectDropDown(NavegadorView.DriverChrome);
                         if (rdbAutomatico.Checked == true)
-                            NavegadorView.Click(NavegadorView.DriverChrome, "btnSalvarNota", "Salvar Nota", "input");
-                        PlanilhaService.Relatorio.Notas.Add(new NotaFiscalValoresl(mskValor.Text.Replace(".", ",")));
+                            NavegadorView.Click(NavegadorView.DriverChrome);
+                        PlanilhaService.Relatorio.Notas.Add(new NotaFiscalValoresl(formulario.Valor.Text.Replace(".", ",")));
                         TelaPrincipalService.MostrarNoGridView(dataGridView1, PlanilhaService.Relatorio.Notas);
                         TelaPrincipalService.AtualizarValoresTotaisNaTela(lblNLancamentos, lblValorTotal, PlanilhaService.Relatorio);
                         LimparCamposFormulario();
@@ -87,7 +84,9 @@ namespace QRCodeACMnfp
 
         private void LimparCamposFormulario()
         {
-            TelaPrincipalService.LimpaFormulario(txtQRCode, txtCNPJ, txtData, txtExtrato, mskValor);
+            Formulario formulario = new Formulario(txtQRCode, txtCNPJ, txtData, txtExtrato, mskValor);
+            //TelaPrincipalService.LimpaFormulario(txtQRCode, txtCNPJ, txtData, txtExtrato, mskValor);
+            TelaPrincipalService.LimpaFormulario(formulario);
             FocoPrincipal();
         }
 
@@ -95,7 +94,7 @@ namespace QRCodeACMnfp
         {
             try
             {
-                PlanilhaService.CriarRelatorio(dataGridView1, PlanilhaService.enderecoSave);
+                PlanilhaService.CriarRelatorio(dataGridView1);
                 LimparCamposFormulario();
             }
             catch (Exception ex)

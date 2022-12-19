@@ -69,18 +69,20 @@ namespace QRCodeACMnfp.Services
 
         }
 
-        internal static void CriarRelatorio(DataGridView dataGridView1, string enderecoSave)
+        internal static void CriarRelatorio(DataGridView dataGridView1)
         {
             DataTable dt = new DataTable();
-            CriaColuna(dt);
             string dataRelatorio = InserirDataNomeRelatorio();
+            string nomeRelatorio = "Relatorio_" + dataRelatorio + ".xlsx";
+            string enderecoCompleto = enderecoSave + nomeRelatorio;
+            CriaColuna(dt);
             using (var workbook = new XLWorkbook())
             {
                 CriaEstruturaRelatorio(dataGridView1, dt);
                 InsereDadosRelatorio(dt, workbook);
-                SalvarRelatorio(enderecoSave, dataRelatorio, workbook);
-                InformaUsuario(enderecoSave);
-                AbreAplicativoPadrao(dataRelatorio);
+                SalvarRelatorio(enderecoCompleto, workbook);
+                InformaUsuario(enderecoCompleto);
+                AbreAplicativoPadrao(enderecoCompleto);
             }
         }
 
@@ -106,19 +108,19 @@ namespace QRCodeACMnfp.Services
             relatorio.Notas.Clear();
         }
 
-        private static void AbreAplicativoPadrao(string dataRelatorio)
+        private static void AbreAplicativoPadrao(string endereco)
         {
-            Process.Start(new ProcessStartInfo(@"C:\Users\ander\Downloads\Relatorio" + dataRelatorio + ".xlsx") { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo(endereco) { UseShellExecute = true });
         }
 
-        private static void InformaUsuario(string enderecoSave)
+        private static void InformaUsuario(string endereco)
         {
-            MessageBox.Show("Relatório Gerado em " + enderecoSave + " .");
+            MessageBox.Show("Relatório Gerado em " + endereco);
         }
 
-        private static void SalvarRelatorio(string enderecoSave, string dataRelatorio, XLWorkbook workbook)
+        private static void SalvarRelatorio(string enderecoRelatorio, XLWorkbook workbook)
         {
-            workbook.SaveAs(enderecoSave + "Relatorio_" + dataRelatorio + ".xlsx");
+            workbook.SaveAs(enderecoRelatorio);
         }
 
         private static void InsereDadosRelatorio(DataTable dt, XLWorkbook workbook)
