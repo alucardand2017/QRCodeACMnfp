@@ -9,6 +9,9 @@
   <a href="https://github.com/alucardand2017/QRCodeACMnfp/blob/master/LICENCE.txt">
     <img align="center" src="https://img.shields.io/badge/License-MIT-brightgreen">
   </a>
+ <a href="https://github.com/alucardand2017/QRCodeACMnfp/blob/master/LICENCE.txt">
+    <img align="center" src="https://img.shields.io/badge/Release-V%201.0.0-red">
+  </a>
 </p>
 
 
@@ -18,6 +21,5 @@ Com nosso app, o processo é realizado de forma automática. O operador escaneia
 
 Como funcionalidade adicional, colocamos a geração do relatório dos dados inseridos, no formato que o cliente trabalhava (XLSX), e que era feito manualmente.
 
-Versão 1.0 
 
 ![image](https://user-images.githubusercontent.com/39005073/215300984-40249dbc-87a5-4ed2-8b02-39b5aaa4cc92.png)
