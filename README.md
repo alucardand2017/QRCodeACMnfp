@@ -9,7 +9,7 @@
   <a href="https://github.com/alucardand2017/QRCodeACMnfp/blob/master/LICENCE.txt">
     <img align="center" src="https://img.shields.io/badge/License-MIT-brightgreen">
   </a>
- <a href="https://github.com/alucardand2017/QRCodeACMnfp/blob/master/LICENCE.txt">
+ <a href="https://github.com/alucardand2017/QRCodeACMnfp">
     <img align="center" src="https://img.shields.io/badge/Release-V%201.0.0-red">
   </a>
 </p>
