@@ -27,7 +27,7 @@ namespace QRCodeACMnfp
             }
             catch (Exception ex)
             {
-               MessageBox.Show(ex.Message, "A versão do Navegador Chrome está na versão 108.X ?");
+               MessageBox.Show(ex.Message, "É possível que o navegador Chrome tenha sido altamente modificado pela Google. Contacte o administrador.");
             }
 
         }

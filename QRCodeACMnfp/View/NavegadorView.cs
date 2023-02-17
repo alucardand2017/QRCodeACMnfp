@@ -5,10 +5,7 @@ using OpenQA.Selenium.Chrome;
 using System.IO;
 using System.Reflection;
 using QRCodeACMnfp.Domain;
-using DocumentFormat.OpenXml.Drawing.Charts;
-using AngleSharp.Dom;
-using ICSharpCode.SharpZipLib.Zip;
-using System.Xml.Linq;
+
 
 namespace QRCodeACMnfp
 {
