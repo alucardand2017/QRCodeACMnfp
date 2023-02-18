@@ -35,6 +35,11 @@ internal class Program
             Console.WriteLine(@"Copiando na pasta raíz ... (7/7)");
             Console.WriteLine(PowerShellHandler.Command("Copy-Item \"D:\\Downloads\\Chromedriver\\chromedriver.exe\" -Destination \"C:\\Program Files (x86)\\Valur\\Valur\""));
             Console.WriteLine("Concluído.");
+
+            Console.WriteLine(@"Iniciado Valur ... (8/8)");
+            Console.WriteLine(PowerShellHandler.Command("Start-Process -FilePath \"C:\\Program Files (x86)\\Valur\\Valur\\Valur.exe\""));
+            Console.WriteLine("Concluído.");
+
         }
         catch (Exception e)
         {

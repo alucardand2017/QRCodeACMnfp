@@ -72,15 +72,10 @@ namespace QRCodeACMnfp.Services
                 VisitLink(linkLabel1);
         }
 
-        internal static void PerguntaDeFecharAplicacao(IWebDriver driver)
+        internal static void FecharAplicacao(IWebDriver driver)
         {
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            var result = MessageBox.Show("Já verificou se o relatorio foi emitido?", "LEMBRETE!", buttons, MessageBoxIcon.Question);
-            if (result == System.Windows.Forms.DialogResult.Yes)
-            {
-                driver.Dispose();
-                Application.Exit();
-            }
+            driver.Dispose();
+            Application.Exit();
         }
 
         internal static DialogResult PerguntaDeLimparTodosRegistros()

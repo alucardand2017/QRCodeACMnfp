@@ -49,7 +49,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.lblValorTotal = new System.Windows.Forms.Label();
             this.lblNLancamentos = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.buttonPanel = new System.Windows.Forms.Panel();
             this.btnInformacoes = new System.Windows.Forms.Button();
@@ -70,7 +69,7 @@
             // 
             this.lbl_Conteudo.AutoSize = true;
             this.lbl_Conteudo.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Conteudo.Location = new System.Drawing.Point(45, 12);
+            this.lbl_Conteudo.Location = new System.Drawing.Point(-1, 14);
             this.lbl_Conteudo.Name = "lbl_Conteudo";
             this.lbl_Conteudo.Size = new System.Drawing.Size(74, 18);
             this.lbl_Conteudo.TabIndex = 3;
@@ -80,7 +79,7 @@
             // 
             this.lbl_Extrato.AutoSize = true;
             this.lbl_Extrato.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Extrato.Location = new System.Drawing.Point(50, 90);
+            this.lbl_Extrato.Location = new System.Drawing.Point(8, 92);
             this.lbl_Extrato.Name = "lbl_Extrato";
             this.lbl_Extrato.Size = new System.Drawing.Size(63, 18);
             this.lbl_Extrato.TabIndex = 4;
@@ -90,17 +89,17 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(22, 40);
+            this.label1.Location = new System.Drawing.Point(25, 40);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 18);
+            this.label1.Size = new System.Drawing.Size(46, 18);
             this.label1.TabIndex = 5;
-            this.label1.Text = "CNPJ/fonte";
+            this.label1.Text = "CNPJ";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(70, 63);
+            this.label2.Location = new System.Drawing.Point(28, 66);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 18);
             this.label2.TabIndex = 6;
@@ -110,7 +109,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(68, 115);
+            this.label3.Location = new System.Drawing.Point(25, 118);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 18);
             this.label3.TabIndex = 7;
@@ -119,7 +118,7 @@
             // txtCNPJ
             // 
             this.txtCNPJ.Enabled = false;
-            this.txtCNPJ.Location = new System.Drawing.Point(121, 38);
+            this.txtCNPJ.Location = new System.Drawing.Point(79, 38);
             this.txtCNPJ.Name = "txtCNPJ";
             this.txtCNPJ.ReadOnly = true;
             this.txtCNPJ.Size = new System.Drawing.Size(211, 20);
@@ -129,7 +128,7 @@
             // txtData
             // 
             this.txtData.Enabled = false;
-            this.txtData.Location = new System.Drawing.Point(121, 64);
+            this.txtData.Location = new System.Drawing.Point(79, 64);
             this.txtData.Name = "txtData";
             this.txtData.ReadOnly = true;
             this.txtData.Size = new System.Drawing.Size(111, 20);
@@ -139,7 +138,7 @@
             // txtExtrato
             // 
             this.txtExtrato.Enabled = false;
-            this.txtExtrato.Location = new System.Drawing.Point(120, 90);
+            this.txtExtrato.Location = new System.Drawing.Point(78, 90);
             this.txtExtrato.Name = "txtExtrato";
             this.txtExtrato.ReadOnly = true;
             this.txtExtrato.Size = new System.Drawing.Size(112, 20);
@@ -148,7 +147,7 @@
             // 
             // txtQRCode
             // 
-            this.txtQRCode.Location = new System.Drawing.Point(121, 12);
+            this.txtQRCode.Location = new System.Drawing.Point(79, 12);
             this.txtQRCode.Name = "txtQRCode";
             this.txtQRCode.Size = new System.Drawing.Size(212, 20);
             this.txtQRCode.TabIndex = 0;
@@ -157,7 +156,7 @@
             // mskValor
             // 
             this.mskValor.Enabled = false;
-            this.mskValor.Location = new System.Drawing.Point(121, 116);
+            this.mskValor.Location = new System.Drawing.Point(79, 116);
             this.mskValor.Name = "mskValor";
             this.mskValor.ReadOnly = true;
             this.mskValor.Size = new System.Drawing.Size(111, 20);
@@ -167,11 +166,11 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(197, 411);
+            this.button1.Location = new System.Drawing.Point(155, 348);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(136, 40);
             this.button1.TabIndex = 3;
-            this.button1.Text = "Fechar App";
+            this.button1.Text = "Gerar Relatorio e Fechar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
@@ -179,17 +178,18 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 8);
+            this.label6.Location = new System.Drawing.Point(3, 6);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(133, 13);
+            this.label6.Size = new System.Drawing.Size(83, 13);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Versão do Chrome: 108.X";
+            this.label6.Text = "Google Chrome";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(2, 24);
+            this.label7.Location = new System.Drawing.Point(2, 21);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(30, 13);
             this.label7.TabIndex = 1;
@@ -200,7 +200,7 @@
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel1.LinkColor = System.Drawing.Color.Indigo;
-            this.linkLabel1.Location = new System.Drawing.Point(43, 24);
+            this.linkLabel1.Location = new System.Drawing.Point(31, 20);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(81, 13);
             this.linkLabel1.TabIndex = 7;
@@ -212,11 +212,11 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(3, 42);
+            this.label8.Location = new System.Drawing.Point(3, 37);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(71, 13);
             this.label8.TabIndex = 3;
-            this.label8.Text = "Versão: 1.0.0";
+            this.label8.Text = "Versão: 1.1.0";
             // 
             // panel2
             // 
@@ -224,9 +224,9 @@
             this.panel2.Controls.Add(this.linkLabel1);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Location = new System.Drawing.Point(12, 388);
+            this.panel2.Location = new System.Drawing.Point(156, 394);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(139, 61);
+            this.panel2.Size = new System.Drawing.Size(134, 55);
             this.panel2.TabIndex = 21;
             // 
             // label4
@@ -271,17 +271,6 @@
             this.lblNLancamentos.Text = "0";
             this.lblNLancamentos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(197, 273);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(139, 40);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Gerar Relatório";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -295,26 +284,27 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(917, 437);
+            this.dataGridView1.Size = new System.Drawing.Size(771, 437);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.TabStop = false;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
             // 
             // buttonPanel
             // 
             this.buttonPanel.Controls.Add(this.dataGridView1);
-            this.buttonPanel.Location = new System.Drawing.Point(342, 12);
+            this.buttonPanel.Location = new System.Drawing.Point(297, 12);
             this.buttonPanel.Name = "buttonPanel";
-            this.buttonPanel.Size = new System.Drawing.Size(917, 437);
+            this.buttonPanel.Size = new System.Drawing.Size(771, 437);
             this.buttonPanel.TabIndex = 29;
             // 
             // btnInformacoes
             // 
             this.btnInformacoes.BackColor = System.Drawing.SystemColors.Control;
             this.btnInformacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInformacoes.Location = new System.Drawing.Point(12, 342);
+            this.btnInformacoes.Location = new System.Drawing.Point(156, 210);
             this.btnInformacoes.Name = "btnInformacoes";
-            this.btnInformacoes.Size = new System.Drawing.Size(100, 40);
+            this.btnInformacoes.Size = new System.Drawing.Size(135, 40);
             this.btnInformacoes.TabIndex = 4;
             this.btnInformacoes.Text = "Como usar?";
             this.btnInformacoes.UseVisualStyleBackColor = false;
@@ -324,9 +314,9 @@
             // 
             this.panel1.Controls.Add(this.rdbManual);
             this.panel1.Controls.Add(this.rdbAutomatico);
-            this.panel1.Location = new System.Drawing.Point(12, 144);
+            this.panel1.Location = new System.Drawing.Point(196, 64);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(102, 60);
+            this.panel1.Size = new System.Drawing.Size(94, 71);
             this.panel1.TabIndex = 1;
             // 
             // rdbManual
@@ -358,9 +348,9 @@
             // btnExcluirRegistro
             // 
             this.btnExcluirRegistro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluirRegistro.Location = new System.Drawing.Point(197, 319);
+            this.btnExcluirRegistro.Location = new System.Drawing.Point(156, 302);
             this.btnExcluirRegistro.Name = "btnExcluirRegistro";
-            this.btnExcluirRegistro.Size = new System.Drawing.Size(139, 40);
+            this.btnExcluirRegistro.Size = new System.Drawing.Size(134, 40);
             this.btnExcluirRegistro.TabIndex = 6;
             this.btnExcluirRegistro.Text = "Excluir ultimo registro";
             this.btnExcluirRegistro.UseVisualStyleBackColor = true;
@@ -370,9 +360,9 @@
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.Red;
-            this.button3.Location = new System.Drawing.Point(197, 365);
+            this.button3.Location = new System.Drawing.Point(154, 256);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(139, 40);
+            this.button3.Size = new System.Drawing.Size(136, 40);
             this.button3.TabIndex = 5;
             this.button3.Text = "Limpar Todos Registros. ";
             this.button3.UseVisualStyleBackColor = true;
@@ -384,7 +374,7 @@
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.lblValorTotal);
             this.panel3.Controls.Add(this.lblNLancamentos);
-            this.panel3.Location = new System.Drawing.Point(126, 144);
+            this.panel3.Location = new System.Drawing.Point(84, 144);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(206, 60);
             this.panel3.TabIndex = 30;
@@ -394,7 +384,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1277, 461);
+            this.ClientSize = new System.Drawing.Size(1080, 461);
             this.ControlBox = false;
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.button3);
@@ -402,7 +392,6 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnInformacoes);
             this.Controls.Add(this.buttonPanel);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.mskValor);
@@ -416,9 +405,11 @@
             this.Controls.Add(this.lbl_Extrato);
             this.Controls.Add(this.lbl_Conteudo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LUVAN Automação - ACM Nota Fiscal Paulista";
+            this.Text = "VALUR - ACM Nota Fiscal Paulista";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -454,7 +445,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblValorTotal;
         private System.Windows.Forms.Label lblNLancamentos;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel buttonPanel;
         private System.Windows.Forms.Button btnInformacoes;

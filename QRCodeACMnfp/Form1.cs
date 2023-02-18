@@ -141,7 +141,8 @@ namespace QRCodeACMnfp
         {
             try
             {
-                TelaPrincipalService.PerguntaDeFecharAplicacao(NavegadorView.DriverChrome);
+                button2_Click(sender, e);
+                TelaPrincipalService.FecharAplicacao(NavegadorView.DriverChrome);
             }
             catch (ApplicationException ex)
             {
@@ -229,7 +230,15 @@ namespace QRCodeACMnfp
             txtQRCode.Focus();
         }
 
+        private void label6_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
 
