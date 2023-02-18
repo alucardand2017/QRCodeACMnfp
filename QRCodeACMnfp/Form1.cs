@@ -29,7 +29,7 @@ namespace QRCodeACMnfp
             }
             catch (Exception ex)
             {
-               MessageBox.Show(ex.Message, "É possível que o navegador Chrome tenha sido altamente modificado pela Google. Contacte o administrador.");
+               MessageBox.Show(ex.Message, "Atualização Necessária! Clique em 'Atualizar Chrome' no programa.");
             }
 
         }
@@ -238,6 +238,19 @@ namespace QRCodeACMnfp
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btn_AtualizarChrome_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AtualizacaoService.AtualizaChrome();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

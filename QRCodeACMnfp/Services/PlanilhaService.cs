@@ -82,7 +82,7 @@ namespace QRCodeACMnfp.Services
                 InsereDadosRelatorio(dt, workbook);
                 SalvarRelatorio(enderecoCompleto, workbook);
                 InformaUsuario(enderecoCompleto);
-                AbreAplicativoPadrao(enderecoCompleto);
+                AbreAplicativoPadraoPlanilha(enderecoCompleto);
             }
         }
 
@@ -108,7 +108,7 @@ namespace QRCodeACMnfp.Services
             relatorio.Notas.Clear();
         }
 
-        private static void AbreAplicativoPadrao(string endereco)
+        private static void AbreAplicativoPadraoPlanilha(string endereco)
         {
             Process.Start(new ProcessStartInfo(endereco) { UseShellExecute = true });
         }

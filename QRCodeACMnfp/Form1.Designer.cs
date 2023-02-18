@@ -58,6 +58,7 @@
             this.btnExcluirRegistro = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btn_AtualizarChrome = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.buttonPanel.SuspendLayout();
@@ -69,7 +70,8 @@
             // 
             this.lbl_Conteudo.AutoSize = true;
             this.lbl_Conteudo.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Conteudo.Location = new System.Drawing.Point(-1, 14);
+            this.lbl_Conteudo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbl_Conteudo.Location = new System.Drawing.Point(2, 14);
             this.lbl_Conteudo.Name = "lbl_Conteudo";
             this.lbl_Conteudo.Size = new System.Drawing.Size(74, 18);
             this.lbl_Conteudo.TabIndex = 3;
@@ -78,47 +80,51 @@
             // lbl_Extrato
             // 
             this.lbl_Extrato.AutoSize = true;
-            this.lbl_Extrato.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Extrato.Location = new System.Drawing.Point(8, 92);
+            this.lbl_Extrato.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Extrato.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbl_Extrato.Location = new System.Drawing.Point(14, 93);
             this.lbl_Extrato.Name = "lbl_Extrato";
-            this.lbl_Extrato.Size = new System.Drawing.Size(63, 18);
+            this.lbl_Extrato.Size = new System.Drawing.Size(55, 13);
             this.lbl_Extrato.TabIndex = 4;
             this.lbl_Extrato.Text = "Extrato";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(25, 40);
+            this.label1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(31, 41);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 18);
+            this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "CNPJ";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(28, 66);
+            this.label2.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.Location = new System.Drawing.Point(32, 67);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 18);
+            this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "Data";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(25, 118);
+            this.label3.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.Control;
+            this.label3.Location = new System.Drawing.Point(28, 119);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 18);
+            this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 7;
             this.label3.Text = "Valor";
             // 
             // txtCNPJ
             // 
             this.txtCNPJ.Enabled = false;
-            this.txtCNPJ.Location = new System.Drawing.Point(79, 38);
+            this.txtCNPJ.Location = new System.Drawing.Point(82, 38);
             this.txtCNPJ.Name = "txtCNPJ";
             this.txtCNPJ.ReadOnly = true;
             this.txtCNPJ.Size = new System.Drawing.Size(211, 20);
@@ -128,7 +134,7 @@
             // txtData
             // 
             this.txtData.Enabled = false;
-            this.txtData.Location = new System.Drawing.Point(79, 64);
+            this.txtData.Location = new System.Drawing.Point(82, 64);
             this.txtData.Name = "txtData";
             this.txtData.ReadOnly = true;
             this.txtData.Size = new System.Drawing.Size(111, 20);
@@ -138,7 +144,7 @@
             // txtExtrato
             // 
             this.txtExtrato.Enabled = false;
-            this.txtExtrato.Location = new System.Drawing.Point(78, 90);
+            this.txtExtrato.Location = new System.Drawing.Point(81, 90);
             this.txtExtrato.Name = "txtExtrato";
             this.txtExtrato.ReadOnly = true;
             this.txtExtrato.Size = new System.Drawing.Size(112, 20);
@@ -147,16 +153,16 @@
             // 
             // txtQRCode
             // 
-            this.txtQRCode.Location = new System.Drawing.Point(79, 12);
+            this.txtQRCode.Location = new System.Drawing.Point(82, 12);
             this.txtQRCode.Name = "txtQRCode";
-            this.txtQRCode.Size = new System.Drawing.Size(212, 20);
+            this.txtQRCode.Size = new System.Drawing.Size(211, 20);
             this.txtQRCode.TabIndex = 0;
             this.txtQRCode.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.txtQRCode_PreviewKeyDown);
             // 
             // mskValor
             // 
             this.mskValor.Enabled = false;
-            this.mskValor.Location = new System.Drawing.Point(79, 116);
+            this.mskValor.Location = new System.Drawing.Point(82, 116);
             this.mskValor.Name = "mskValor";
             this.mskValor.ReadOnly = true;
             this.mskValor.Size = new System.Drawing.Size(111, 20);
@@ -165,13 +171,14 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(155, 348);
+            this.button1.Location = new System.Drawing.Point(158, 348);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(136, 40);
-            this.button1.TabIndex = 3;
+            this.button1.TabIndex = 2;
             this.button1.Text = "Gerar Relatorio e Fechar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // label6
@@ -220,11 +227,12 @@
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.SystemColors.Info;
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.linkLabel1);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Location = new System.Drawing.Point(156, 394);
+            this.panel2.Location = new System.Drawing.Point(159, 394);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(134, 55);
             this.panel2.TabIndex = 21;
@@ -232,6 +240,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.SystemColors.HighlightText;
             this.label4.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(4, 8);
             this.label4.Name = "label4";
@@ -242,6 +251,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.SystemColors.HighlightText;
             this.label9.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(3, 35);
             this.label9.Name = "label9";
@@ -252,10 +262,11 @@
             // lblValorTotal
             // 
             this.lblValorTotal.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblValorTotal.BackColor = System.Drawing.SystemColors.HighlightText;
             this.lblValorTotal.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorTotal.Location = new System.Drawing.Point(54, 37);
+            this.lblValorTotal.Location = new System.Drawing.Point(78, 38);
             this.lblValorTotal.Name = "lblValorTotal";
-            this.lblValorTotal.Size = new System.Drawing.Size(141, 18);
+            this.lblValorTotal.Size = new System.Drawing.Size(199, 18);
             this.lblValorTotal.TabIndex = 26;
             this.lblValorTotal.Text = "0,00";
             this.lblValorTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -263,10 +274,11 @@
             // lblNLancamentos
             // 
             this.lblNLancamentos.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblNLancamentos.BackColor = System.Drawing.SystemColors.HighlightText;
             this.lblNLancamentos.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNLancamentos.Location = new System.Drawing.Point(57, 7);
+            this.lblNLancamentos.Location = new System.Drawing.Point(81, 8);
             this.lblNLancamentos.Name = "lblNLancamentos";
-            this.lblNLancamentos.Size = new System.Drawing.Size(138, 18);
+            this.lblNLancamentos.Size = new System.Drawing.Size(196, 18);
             this.lblNLancamentos.TabIndex = 25;
             this.lblNLancamentos.Text = "0";
             this.lblNLancamentos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -300,21 +312,22 @@
             // 
             // btnInformacoes
             // 
-            this.btnInformacoes.BackColor = System.Drawing.SystemColors.Control;
+            this.btnInformacoes.BackColor = System.Drawing.SystemColors.Info;
             this.btnInformacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInformacoes.Location = new System.Drawing.Point(156, 210);
+            this.btnInformacoes.Location = new System.Drawing.Point(5, 394);
             this.btnInformacoes.Name = "btnInformacoes";
-            this.btnInformacoes.Size = new System.Drawing.Size(135, 40);
+            this.btnInformacoes.Size = new System.Drawing.Size(135, 55);
             this.btnInformacoes.TabIndex = 4;
-            this.btnInformacoes.Text = "Como usar?";
+            this.btnInformacoes.Text = "Manual do Usuário";
             this.btnInformacoes.UseVisualStyleBackColor = false;
             this.btnInformacoes.Click += new System.EventHandler(this.btnInformacoes_Click);
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel1.Controls.Add(this.rdbManual);
             this.panel1.Controls.Add(this.rdbAutomatico);
-            this.panel1.Location = new System.Drawing.Point(196, 64);
+            this.panel1.Location = new System.Drawing.Point(199, 64);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(94, 71);
             this.panel1.TabIndex = 1;
@@ -322,6 +335,7 @@
             // rdbManual
             // 
             this.rdbManual.AutoSize = true;
+            this.rdbManual.BackColor = System.Drawing.SystemColors.ControlLight;
             this.rdbManual.Font = new System.Drawing.Font("Verdana", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbManual.Location = new System.Drawing.Point(5, 33);
             this.rdbManual.Name = "rdbManual";
@@ -329,12 +343,13 @@
             this.rdbManual.TabIndex = 1;
             this.rdbManual.TabStop = true;
             this.rdbManual.Text = "Manual";
-            this.rdbManual.UseVisualStyleBackColor = true;
+            this.rdbManual.UseVisualStyleBackColor = false;
             this.rdbManual.CheckedChanged += new System.EventHandler(this.rdbManual_CheckedChanged);
             // 
             // rdbAutomatico
             // 
             this.rdbAutomatico.AutoSize = true;
+            this.rdbAutomatico.BackColor = System.Drawing.SystemColors.ControlLight;
             this.rdbAutomatico.Font = new System.Drawing.Font("Verdana", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbAutomatico.Location = new System.Drawing.Point(5, 5);
             this.rdbAutomatico.Name = "rdbAutomatico";
@@ -342,50 +357,69 @@
             this.rdbAutomatico.TabIndex = 0;
             this.rdbAutomatico.TabStop = true;
             this.rdbAutomatico.Text = "Auto.";
-            this.rdbAutomatico.UseVisualStyleBackColor = true;
+            this.rdbAutomatico.UseVisualStyleBackColor = false;
             this.rdbAutomatico.CheckedChanged += new System.EventHandler(this.rdbAutomatico_CheckedChanged);
             // 
             // btnExcluirRegistro
             // 
+            this.btnExcluirRegistro.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnExcluirRegistro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluirRegistro.Location = new System.Drawing.Point(156, 302);
+            this.btnExcluirRegistro.Location = new System.Drawing.Point(5, 348);
             this.btnExcluirRegistro.Name = "btnExcluirRegistro";
             this.btnExcluirRegistro.Size = new System.Drawing.Size(134, 40);
-            this.btnExcluirRegistro.TabIndex = 6;
+            this.btnExcluirRegistro.TabIndex = 3;
             this.btnExcluirRegistro.Text = "Excluir ultimo registro";
-            this.btnExcluirRegistro.UseVisualStyleBackColor = true;
+            this.btnExcluirRegistro.UseVisualStyleBackColor = false;
             this.btnExcluirRegistro.Click += new System.EventHandler(this.btnExcluirRegistro_Click);
             // 
             // button3
             // 
+            this.button3.BackColor = System.Drawing.SystemColors.ControlLight;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.Red;
-            this.button3.Location = new System.Drawing.Point(154, 256);
+            this.button3.Location = new System.Drawing.Point(5, 302);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(136, 40);
+            this.button3.Size = new System.Drawing.Size(135, 40);
             this.button3.TabIndex = 5;
-            this.button3.Text = "Limpar Todos Registros. ";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.TabStop = false;
+            this.button3.Text = "Limpar Registros. ";
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.SystemColors.HighlightText;
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.lblValorTotal);
             this.panel3.Controls.Add(this.lblNLancamentos);
-            this.panel3.Location = new System.Drawing.Point(84, 144);
+            this.panel3.Location = new System.Drawing.Point(5, 141);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(206, 60);
+            this.panel3.Size = new System.Drawing.Size(288, 63);
             this.panel3.TabIndex = 30;
+            // 
+            // btn_AtualizarChrome
+            // 
+            this.btn_AtualizarChrome.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btn_AtualizarChrome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_AtualizarChrome.ForeColor = System.Drawing.Color.Red;
+            this.btn_AtualizarChrome.Location = new System.Drawing.Point(158, 302);
+            this.btn_AtualizarChrome.Name = "btn_AtualizarChrome";
+            this.btn_AtualizarChrome.Size = new System.Drawing.Size(136, 40);
+            this.btn_AtualizarChrome.TabIndex = 31;
+            this.btn_AtualizarChrome.TabStop = false;
+            this.btn_AtualizarChrome.Text = "Atualizar Chrome";
+            this.btn_AtualizarChrome.UseVisualStyleBackColor = false;
+            this.btn_AtualizarChrome.Click += new System.EventHandler(this.btn_AtualizarChrome_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1080, 461);
+            this.BackColor = System.Drawing.Color.DarkCyan;
+            this.ClientSize = new System.Drawing.Size(1075, 456);
             this.ControlBox = false;
+            this.Controls.Add(this.btn_AtualizarChrome);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnExcluirRegistro);
@@ -404,6 +438,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl_Extrato);
             this.Controls.Add(this.lbl_Conteudo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -454,5 +489,6 @@
         private System.Windows.Forms.Button btnExcluirRegistro;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button btn_AtualizarChrome;
     }
 }
