@@ -69,10 +69,10 @@
             // lbl_Conteudo
             // 
             this.lbl_Conteudo.AutoSize = true;
-            this.lbl_Conteudo.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Conteudo.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Conteudo.Location = new System.Drawing.Point(45, 12);
             this.lbl_Conteudo.Name = "lbl_Conteudo";
-            this.lbl_Conteudo.Size = new System.Drawing.Size(69, 18);
+            this.lbl_Conteudo.Size = new System.Drawing.Size(74, 18);
             this.lbl_Conteudo.TabIndex = 3;
             this.lbl_Conteudo.Text = "QRCode";
             // 
@@ -232,20 +232,20 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(4, 8);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(27, 18);
+            this.label4.Size = new System.Drawing.Size(29, 18);
             this.label4.TabIndex = 23;
             this.label4.Text = "Nº";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(3, 35);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(55, 18);
+            this.label9.Size = new System.Drawing.Size(60, 18);
             this.label9.TabIndex = 24;
             this.label9.Text = "Total: ";
             // 
@@ -332,10 +332,10 @@
             // rdbManual
             // 
             this.rdbManual.AutoSize = true;
-            this.rdbManual.Font = new System.Drawing.Font("Verdana", 11.25F);
+            this.rdbManual.Font = new System.Drawing.Font("Verdana", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbManual.Location = new System.Drawing.Point(5, 33);
             this.rdbManual.Name = "rdbManual";
-            this.rdbManual.Size = new System.Drawing.Size(78, 22);
+            this.rdbManual.Size = new System.Drawing.Size(84, 22);
             this.rdbManual.TabIndex = 1;
             this.rdbManual.TabStop = true;
             this.rdbManual.Text = "Manual";
@@ -345,10 +345,10 @@
             // rdbAutomatico
             // 
             this.rdbAutomatico.AutoSize = true;
-            this.rdbAutomatico.Font = new System.Drawing.Font("Verdana", 11.25F);
+            this.rdbAutomatico.Font = new System.Drawing.Font("Verdana", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbAutomatico.Location = new System.Drawing.Point(5, 5);
             this.rdbAutomatico.Name = "rdbAutomatico";
-            this.rdbAutomatico.Size = new System.Drawing.Size(66, 22);
+            this.rdbAutomatico.Size = new System.Drawing.Size(70, 22);
             this.rdbAutomatico.TabIndex = 0;
             this.rdbAutomatico.TabStop = true;
             this.rdbAutomatico.Text = "Auto.";
@@ -395,6 +395,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1277, 461);
+            this.ControlBox = false;
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnExcluirRegistro);

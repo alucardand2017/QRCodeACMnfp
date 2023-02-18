@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VALUR", "QRCodeACMnfp\VALUR.csproj", "{701D3BAB-C044-4451-8043-F66187A97E5C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SHELLVALUR", "ShellScript\SHELLVALUR.csproj", "{B4B82763-8160-4663-BC28-6FE315A7D48D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{701D3BAB-C044-4451-8043-F66187A97E5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{701D3BAB-C044-4451-8043-F66187A97E5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{701D3BAB-C044-4451-8043-F66187A97E5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4B82763-8160-4663-BC28-6FE315A7D48D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4B82763-8160-4663-BC28-6FE315A7D48D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4B82763-8160-4663-BC28-6FE315A7D48D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4B82763-8160-4663-BC28-6FE315A7D48D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
