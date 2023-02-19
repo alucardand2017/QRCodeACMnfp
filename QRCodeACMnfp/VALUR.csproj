@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{701D3BAB-C044-4451-8043-F66187A97E5C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>QRCodeACMnfp</RootNamespace>
-    <AssemblyName>QRCodeACMnfp</AssemblyName>
+    <RootNamespace>Valur</RootNamespace>
+    <AssemblyName>Valur</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -80,6 +80,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">

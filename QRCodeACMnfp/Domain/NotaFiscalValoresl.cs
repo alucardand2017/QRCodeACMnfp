@@ -1,5 +1,4 @@
 ﻿
-
 namespace QRCodeACMnfp
 {
     class NotaFiscalValoresl

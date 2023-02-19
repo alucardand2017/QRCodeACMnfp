@@ -1,8 +1,4 @@
-﻿using DocumentFormat.OpenXml.Vml;
-using System;
-using System.Security.Cryptography;
-
-internal class Program
+﻿internal class Program
 
 {
     private static void Main(string[] args)
@@ -58,11 +54,13 @@ internal class Program
 
             Console.WriteLine(@"Copiando na pasta raíz ... (7/8)");
             PowerShellHandler.Command($"Copy-Item  \"{chromedriverFolder}\\chromedriver.exe\" -Destination \"{Environment.CurrentDirectory}\"");
-            Console.WriteLine("Concluído.");
+            Console.WriteLine("Concluído.\n");
 
             Console.WriteLine("Excluindo arquivos auxiliares ... (8/8)");
             Console.Write(PowerShellHandler.Command($"Remove-Item  {chromedriverFolder} -Recurse"));
             Console.WriteLine("Concluido.\n");
+
+
 
             //Console.WriteLine(@"Iniciado Valur ... (8/8)");
             //Console.WriteLine(PowerShellHandler.Command("Start-Process -FilePath \"C:\\Program Files (x86)\\Valur\\Valur\\Valur.exe\""));

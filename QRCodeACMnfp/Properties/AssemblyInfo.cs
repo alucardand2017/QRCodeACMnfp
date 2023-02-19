@@ -5,11 +5,12 @@ using System.Runtime.InteropServices;
 // As informações gerais sobre um assembly são controladas por
 // conjunto de atributos. Altere estes valores de atributo para modificar as informações
 // associadas a um assembly.
-[assembly: AssemblyTitle("QRCodeACMnfp")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Valur - Automação")]
+[assembly: AssemblyDescription("Automação do site Nota Fiscal Paulista para Inserção de dados de cupom fiscal via leitura" +
+    "de QRCode com Selenium")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("QRCodeACMnfp")]
+[assembly: AssemblyProduct("Valur")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

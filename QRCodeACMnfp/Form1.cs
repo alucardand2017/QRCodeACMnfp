@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using QRCodeACMnfp.Services;
 using QRCodeACMnfp.Domain;
-using DocumentFormat.OpenXml.Bibliography;
+using System.Diagnostics;
 
 namespace QRCodeACMnfp
 {
@@ -244,12 +243,14 @@ namespace QRCodeACMnfp
         {
             try
             {
-                AtualizacaoService.AtualizaChrome();
+                var startInfo = new ProcessStartInfo(@"A:\Dev\1_Csharp\PROJETOS\QRCodeACMnfp\QRCodeACMnfp\ShellScript\bin\Release\net7.0\SHELLVALUR.exe");
+                Process.Start(startInfo);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                MessageBox.Show("Erro ao limpar os registros. ", ex.Message);
+
             }
         }
     }
