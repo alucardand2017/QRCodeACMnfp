@@ -52,6 +52,7 @@ namespace QRCodeACMnfp
         //            "no sistema da Nota fiscal paulista"); ;
         //    }
         //}
+        
         internal static void EnterText(IWebDriver driverChrome, Formulario formulario)
         {
             try
@@ -90,6 +91,7 @@ namespace QRCodeACMnfp
                     "no sistema da Nota fiscal paulista"); ;
             }
         }
+        
         public static void Click(IWebDriver driver, string element, string value, string elementtype)
         {
             try
@@ -102,6 +104,7 @@ namespace QRCodeACMnfp
                 throw new WebDriverArgumentException("Não foi possível encontra o CTA da página.");
             }
         }
+        
         public static void Click(IWebDriver driver)
         {
             try
@@ -113,6 +116,7 @@ namespace QRCodeACMnfp
                 throw new WebDriverArgumentException("Não foi possível encontra o CTA da página.");
             }
         }
+
         //public static void SelectDropDown(IWebDriver driver, string element, string value, string elementtype)
         //{
         //    try

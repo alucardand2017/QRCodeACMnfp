@@ -45,7 +45,14 @@ namespace QRCodeACMnfp.Services
 
         internal static void AbrirNavegadorEmNfp(IWebDriver driver)
         {
-            driver.Navigate().GoToUrl("https://www.nfp.fazenda.sp.gov.br/EntidadesFilantropicas/ListagemNotaEntidade.aspx");
+            try
+            {
+                driver.Navigate().GoToUrl("https://www.nfp.fazenda.sp.gov.br/EntidadesFilantropicas/ListagemNotaEntidade.aspx");
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Erro ao tentar abrir o site com esse driver: ", ex.Message);
+            }
         }
 
         internal static void ManualDoUsuario(string enderecoSave)
@@ -81,7 +88,7 @@ namespace QRCodeACMnfp.Services
         internal static DialogResult PerguntaDeLimparTodosRegistros()
         {
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            var result = MessageBox.Show("Certeza desse comando?", "LEMBRETE!", buttons, MessageBoxIcon.Question);
+            var result = MessageBox.Show("Deseja realmente limpar todos os campos do relatório?", "Atenção!", buttons, MessageBoxIcon.Question);
             return result;
         }
 

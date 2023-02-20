@@ -56,9 +56,9 @@
             this.rdbManual = new System.Windows.Forms.RadioButton();
             this.rdbAutomatico = new System.Windows.Forms.RadioButton();
             this.btnExcluirRegistro = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btn_AtualizarChrome = new System.Windows.Forms.Button();
+            this.lbl_chromeVersao = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.buttonPanel.SuspendLayout();
@@ -187,9 +187,9 @@
             this.label6.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(3, 6);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(83, 13);
+            this.label6.Size = new System.Drawing.Size(51, 13);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Google Chrome";
+            this.label6.Text = "Chrome: ";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
@@ -207,7 +207,7 @@
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel1.LinkColor = System.Drawing.Color.Indigo;
-            this.linkLabel1.Location = new System.Drawing.Point(31, 20);
+            this.linkLabel1.Location = new System.Drawing.Point(50, 20);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(81, 13);
             this.linkLabel1.TabIndex = 7;
@@ -221,13 +221,15 @@
             this.label8.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(3, 37);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(71, 13);
+            this.label8.Size = new System.Drawing.Size(46, 13);
             this.label8.TabIndex = 3;
-            this.label8.Text = "Versão: 1.1.0";
+            this.label8.Text = "Release:";
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Info;
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.lbl_chromeVersao);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.linkLabel1);
             this.panel2.Controls.Add(this.label7);
@@ -299,7 +301,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(771, 437);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.TabStop = false;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
             // 
             // buttonPanel
@@ -337,7 +338,7 @@
             this.rdbManual.AutoSize = true;
             this.rdbManual.BackColor = System.Drawing.SystemColors.ControlLight;
             this.rdbManual.Font = new System.Drawing.Font("Verdana", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbManual.Location = new System.Drawing.Point(5, 33);
+            this.rdbManual.Location = new System.Drawing.Point(8, 39);
             this.rdbManual.Name = "rdbManual";
             this.rdbManual.Size = new System.Drawing.Size(84, 22);
             this.rdbManual.TabIndex = 1;
@@ -351,7 +352,7 @@
             this.rdbAutomatico.AutoSize = true;
             this.rdbAutomatico.BackColor = System.Drawing.SystemColors.ControlLight;
             this.rdbAutomatico.Font = new System.Drawing.Font("Verdana", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbAutomatico.Location = new System.Drawing.Point(5, 5);
+            this.rdbAutomatico.Location = new System.Drawing.Point(8, 11);
             this.rdbAutomatico.Name = "rdbAutomatico";
             this.rdbAutomatico.Size = new System.Drawing.Size(70, 22);
             this.rdbAutomatico.TabIndex = 0;
@@ -372,20 +373,6 @@
             this.btnExcluirRegistro.UseVisualStyleBackColor = false;
             this.btnExcluirRegistro.Click += new System.EventHandler(this.btnExcluirRegistro_Click);
             // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.Red;
-            this.button3.Location = new System.Drawing.Point(5, 302);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(135, 40);
-            this.button3.TabIndex = 5;
-            this.button3.TabStop = false;
-            this.button3.Text = "Limpar Registros. ";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.HighlightText;
@@ -398,19 +385,25 @@
             this.panel3.Size = new System.Drawing.Size(288, 63);
             this.panel3.TabIndex = 30;
             // 
-            // btn_AtualizarChrome
+            // lbl_chromeVersao
             // 
-            this.btn_AtualizarChrome.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btn_AtualizarChrome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_AtualizarChrome.ForeColor = System.Drawing.Color.Red;
-            this.btn_AtualizarChrome.Location = new System.Drawing.Point(158, 302);
-            this.btn_AtualizarChrome.Name = "btn_AtualizarChrome";
-            this.btn_AtualizarChrome.Size = new System.Drawing.Size(136, 40);
-            this.btn_AtualizarChrome.TabIndex = 31;
-            this.btn_AtualizarChrome.TabStop = false;
-            this.btn_AtualizarChrome.Text = "Atualizar Chrome";
-            this.btn_AtualizarChrome.UseVisualStyleBackColor = false;
-            this.btn_AtualizarChrome.Click += new System.EventHandler(this.btn_AtualizarChrome_Click);
+            this.lbl_chromeVersao.AutoSize = true;
+            this.lbl_chromeVersao.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_chromeVersao.Location = new System.Drawing.Point(55, 6);
+            this.lbl_chromeVersao.Name = "lbl_chromeVersao";
+            this.lbl_chromeVersao.Size = new System.Drawing.Size(76, 13);
+            this.lbl_chromeVersao.TabIndex = 8;
+            this.lbl_chromeVersao.Text = "110.0.5481.77";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(98, 37);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(31, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "1.1.0";
             // 
             // Form1
             // 
@@ -419,9 +412,7 @@
             this.BackColor = System.Drawing.Color.DarkCyan;
             this.ClientSize = new System.Drawing.Size(1075, 456);
             this.ControlBox = false;
-            this.Controls.Add(this.btn_AtualizarChrome);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.btnExcluirRegistro);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnInformacoes);
@@ -487,8 +478,8 @@
         private System.Windows.Forms.RadioButton rdbManual;
         private System.Windows.Forms.RadioButton rdbAutomatico;
         private System.Windows.Forms.Button btnExcluirRegistro;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button btn_AtualizarChrome;
+        private System.Windows.Forms.Label lbl_chromeVersao;
+        private System.Windows.Forms.Label label5;
     }
 }

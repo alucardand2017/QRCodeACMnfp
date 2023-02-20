@@ -31,6 +31,7 @@ namespace QRCodeACMnfp.Services
         //            "do código ou se escaneou sem querer o código de barras próximo.");
         //    }
         //}
+        
         internal static void SepararCamposQRCode(Formulario formulario)
         {
             if (formulario.Qrcode.Text.Length > 60)

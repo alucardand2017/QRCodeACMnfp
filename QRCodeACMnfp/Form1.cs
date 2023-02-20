@@ -3,7 +3,8 @@ using System.Windows.Forms;
 using OpenQA.Selenium;
 using QRCodeACMnfp.Services;
 using QRCodeACMnfp.Domain;
-using System.Diagnostics;
+using Valur.Utilities;
+using System.Threading.Tasks;
 
 namespace QRCodeACMnfp
 {
@@ -13,6 +14,7 @@ namespace QRCodeACMnfp
         {
             InitializeComponent();
         }        
+
         private void Form1_Load(object sender, EventArgs e)
         {
             
@@ -28,9 +30,33 @@ namespace QRCodeACMnfp
             }
             catch (Exception ex)
             {
-               MessageBox.Show(ex.Message, "Atualização Necessária! Clique em 'Atualizar Chrome' no programa.");
+                MessageBox.Show("Atualização do driver Necessária!", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                AtualizacaoDoChrome();
             }
+        }
 
+        private async Task Form1_LoadedAsync(object sender, EventArgs e)
+        {
+            lbl_chromeVersao.Text = await ChromeUpdate.GetVersionChromium();
+        }
+
+        private static async void AtualizacaoDoChrome()
+        {
+            try
+            {
+                var result = MessageBox.Show("Deseja atualizar o Driver?", "Info.", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (result == DialogResult.Yes)
+                {
+                    await ChromeUpdate.AtualizacaoChromiun();
+                    MessageBox.Show("Atualização Concluída. Saindo do programa e validando alterações.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Application.Exit();
+                }
+                Application.Exit();
+            }
+            catch (Exception exx)
+            {
+                MessageBox.Show("Erro na atualização dos arquivos", exx.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void txtQRCode_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) //Entrada Principal
@@ -86,7 +112,6 @@ namespace QRCodeACMnfp
         private void LimparCamposFormulario()
         {
             Formulario formulario = new Formulario(txtQRCode, txtCNPJ, txtData, txtExtrato, mskValor);
-            //TelaPrincipalService.LimpaFormulario(txtQRCode, txtCNPJ, txtData, txtExtrato, mskValor);
             TelaPrincipalService.LimpaFormulario(formulario);
             FocoPrincipal();
         }
@@ -100,7 +125,7 @@ namespace QRCodeACMnfp
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Erro na geração do relatório");
+                throw new ArgumentException(ex.Message, "Erro na geração do relatório");
             }
         }
 
@@ -143,9 +168,9 @@ namespace QRCodeACMnfp
                 button2_Click(sender, e);
                 TelaPrincipalService.FecharAplicacao(NavegadorView.DriverChrome);
             }
-            catch (ApplicationException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("Erro ao fechar o aplicativo! => ", ex.Message);
+                MessageBox.Show("Erro durante o fechamento do aplicativo.", ex.Message);
             }
             finally
             {
@@ -182,22 +207,22 @@ namespace QRCodeACMnfp
 
         } //exclui 1 registro //trycatch
 
-        private void button3_Click(object sender, EventArgs e) //exclui todos registros
-        {
-            try
-            {
-                if (TelaPrincipalService.PerguntaDeLimparTodosRegistros() == DialogResult.Yes)
-                    LimparTodosDados();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao limpar os registros. ", ex.Message);
-            }
-            finally
-            {
-                FocoPrincipal();
-            }
-        }
+        //private void button3_Click(object sender, EventArgs e) //exclui todos registros
+        //{
+        //    try
+        //    {
+        //        if (TelaPrincipalService.PerguntaDeLimparTodosRegistros() == DialogResult.Yes)
+        //            LimparTodosDados();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Erro ao limpar os registros. ", ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        FocoPrincipal();
+        //    }
+        //}
 
         private void LimparTodosDados()
         {
@@ -232,26 +257,6 @@ namespace QRCodeACMnfp
         private void label6_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void btn_AtualizarChrome_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var startInfo = new ProcessStartInfo(@"A:\Dev\1_Csharp\PROJETOS\QRCodeACMnfp\QRCodeACMnfp\ShellScript\bin\Release\net7.0\SHELLVALUR.exe");
-                Process.Start(startInfo);
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("Erro ao limpar os registros. ", ex.Message);
-
-            }
         }
     }
 }
