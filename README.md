@@ -4,13 +4,13 @@
 
 <p align="center">
  <a href="https://dotnet.microsoft.com/en-us/languages/csharp">
-  <img align="center" src="https://img.shields.io/badge/Development%20witch-Csharp-blueviolet">
+  <img align="center" src="https://img.shields.io/badge/Development%20with-Csharp-blueviolet">
  </a>
   <a href="https://github.com/alucardand2017/QRCodeACMnfp/blob/master/LICENCE.txt">
     <img align="center" src="https://img.shields.io/badge/License-MIT-brightgreen">
   </a>
  <a href="https://github.com/alucardand2017/QRCodeACMnfp">
-    <img align="center" src="https://img.shields.io/badge/Release-V%201.0.0-red">
+    <img align="center" src="https://img.shields.io/badge/Release-V%201.1.0-red">
   </a>
 </p>
 
