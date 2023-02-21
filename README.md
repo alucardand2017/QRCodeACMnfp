@@ -1,4 +1,4 @@
-# VALUR
+# VALUR-Automação
 
 ![image](https://user-images.githubusercontent.com/39005073/219985214-7419097b-4aaa-4fdf-87b8-fd1ba4ee5e6b.png)
 
