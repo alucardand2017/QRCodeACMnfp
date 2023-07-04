@@ -3,7 +3,7 @@ using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.IO.Compression;
-
+using InsideNotaFiscal;
 namespace Valur.Utilities
 {
     internal class ChromeUpdate
@@ -25,14 +25,13 @@ namespace Valur.Utilities
             }
             catch (Exception e)
             {
-                Console.WriteLine("Erro na busca datualização do Chrome: " + e.Message);
+                throw new ArgumentException("Erro na busca datualização do Chrome: " + e.Message);
             }
         }
         private static string GetUriChromeVersion(string latestVersion)
         {
             return $"https://chromedriver.storage.googleapis.com/{latestVersion}/{archiveNameZip}";
         }
-
         private static void ExtractorArchivesInLocal(string destinationDownloadChromeVersion, string chromedriverFolder)
         {
             try
@@ -44,7 +43,6 @@ namespace Valur.Utilities
                 throw new ArgumentException("Erro ao extrair os arquivos para o sistema");
             }
         }
-
         private static void CheckDeleteExtractFoldersInDirectory(string destinationDownloadChromeVersion, string chromedriverFolder)
         {
             if (File.Exists(Environment.CurrentDirectory + $"\\{archiveNameExe}"))
@@ -57,7 +55,6 @@ namespace Valur.Utilities
             if (File.Exists(Environment.CurrentDirectory + $"\\{archiveNameZip}"))
                 File.Delete(Environment.CurrentDirectory + $"\\{archiveNameZip}");
         }
-
         private static async Task CopyZiFileInCurrentDirectory(string sourceDownloadChromeVersion)
         {
             try
@@ -76,7 +73,7 @@ namespace Valur.Utilities
             }
            
         }
-        internal static async Task<string> GetVersionChromium()
+        public static async Task<string> GetVersionChromium()
         {
             try
             {

@@ -1,4 +1,4 @@
-﻿namespace QRCodeACMnfp
+﻿namespace InsideNotaFiscal
 {
     partial class Form1
     {
@@ -45,6 +45,8 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lbl_chromeVersao = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.lblValorTotal = new System.Windows.Forms.Label();
@@ -57,8 +59,6 @@
             this.rdbAutomatico = new System.Windows.Forms.RadioButton();
             this.btnExcluirRegistro = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.lbl_chromeVersao = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.buttonPanel.SuspendLayout();
@@ -239,6 +239,26 @@
             this.panel2.Size = new System.Drawing.Size(134, 55);
             this.panel2.TabIndex = 21;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(98, 37);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(31, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "1.1.1";
+            // 
+            // lbl_chromeVersao
+            // 
+            this.lbl_chromeVersao.AutoSize = true;
+            this.lbl_chromeVersao.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_chromeVersao.Location = new System.Drawing.Point(55, 6);
+            this.lbl_chromeVersao.Name = "lbl_chromeVersao";
+            this.lbl_chromeVersao.Size = new System.Drawing.Size(76, 13);
+            this.lbl_chromeVersao.TabIndex = 8;
+            this.lbl_chromeVersao.Text = "110.0.5481.77";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -385,31 +405,11 @@
             this.panel3.Size = new System.Drawing.Size(288, 63);
             this.panel3.TabIndex = 30;
             // 
-            // lbl_chromeVersao
-            // 
-            this.lbl_chromeVersao.AutoSize = true;
-            this.lbl_chromeVersao.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_chromeVersao.Location = new System.Drawing.Point(55, 6);
-            this.lbl_chromeVersao.Name = "lbl_chromeVersao";
-            this.lbl_chromeVersao.Size = new System.Drawing.Size(76, 13);
-            this.lbl_chromeVersao.TabIndex = 8;
-            this.lbl_chromeVersao.Text = "110.0.5481.77";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(98, 37);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(31, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "1.1.0";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkCyan;
+            this.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.ClientSize = new System.Drawing.Size(1075, 456);
             this.ControlBox = false;
             this.Controls.Add(this.panel3);

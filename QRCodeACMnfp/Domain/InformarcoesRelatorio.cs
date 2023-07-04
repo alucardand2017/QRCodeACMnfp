@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace QRCodeACMnfp.Domain
+namespace InsideNotaFiscal.Domain
 {
     class InformarcoesRelatorio
     {

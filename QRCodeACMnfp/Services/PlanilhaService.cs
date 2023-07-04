@@ -1,5 +1,5 @@
 ﻿using ClosedXML.Excel;
-using QRCodeACMnfp.Domain;
+using InsideNotaFiscal.Domain;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,7 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace QRCodeACMnfp.Services
+namespace InsideNotaFiscal.Services
 {
 
     internal sealed class PlanilhaService

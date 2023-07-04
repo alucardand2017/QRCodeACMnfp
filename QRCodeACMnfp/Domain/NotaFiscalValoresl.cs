@@ -1,5 +1,5 @@
 ﻿
-namespace QRCodeACMnfp
+namespace InsideNotaFiscal
 {
     class NotaFiscalValoresl
     {

@@ -1,9 +1,9 @@
-﻿using QRCodeACMnfp.Domain;
+﻿using InsideNotaFiscal.Domain;
 using System;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace QRCodeACMnfp.Services
+namespace InsideNotaFiscal.Services
 {
     internal sealed class ValidacaoService
     {

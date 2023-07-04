@@ -4,10 +4,10 @@ using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Chrome;
 using System.IO;
 using System.Reflection;
-using QRCodeACMnfp.Domain;
+using InsideNotaFiscal.Domain;
 
 
-namespace QRCodeACMnfp
+namespace InsideNotaFiscal
 {
     class NavegadorView
     {

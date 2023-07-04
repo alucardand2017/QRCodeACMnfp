@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Windows.Forms;
 using OpenQA.Selenium;
-using QRCodeACMnfp.Services;
-using QRCodeACMnfp.Domain;
+using InsideNotaFiscal.Services;
+using InsideNotaFiscal.Domain;
 using Valur.Utilities;
 using System.Threading.Tasks;
 
-namespace QRCodeACMnfp
+namespace InsideNotaFiscal
 {
     public partial class Form1 : Form
     {
@@ -27,6 +27,7 @@ namespace QRCodeACMnfp
                 PlanilhaService.FormatarCelulaDoGridView(dataGridView1);
                 rdbManual.Checked = true; //modo manual ativado de inicio
                 LimparCamposFormulario();
+                Form1_LoadedAsync(sender, e);
             }
             catch (Exception ex)
             {
@@ -56,6 +57,8 @@ namespace QRCodeACMnfp
             catch (Exception exx)
             {
                 MessageBox.Show("Erro na atualização dos arquivos", exx.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Fechando a aplicação - Contacte o administrador",exx.Message , MessageBoxButtons.OK);
+                Application.Exit();
             }
         }
 

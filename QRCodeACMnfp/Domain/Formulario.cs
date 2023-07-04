@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace QRCodeACMnfp.Domain
+namespace InsideNotaFiscal.Domain
 {
     internal class Formulario
     {
